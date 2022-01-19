@@ -1,0 +1,52 @@
+<template>
+    <lightning-card icon-name={topic.icon}>
+        <stheading slot="title"><b>{topic.title}</b></stheading>
+
+
+        <div class="slds-card__body--inner">
+            <!--use this template for inquiries and see more articles screen-->
+            <!--template if:false={knowledgeviewbycount}-->
+            <template for:each={topic.subtopics} for:item="subtopic" for:index="idx">                 
+                <h2 class="slds-truncate" title={subtopic.title} key={subtopic.Id}>
+                    <st>
+                        <a href={subtopic.link} onclick={handleSubtopicClick} data-id={subtopic.Id}
+                            data-name={subtopic.title} data-type={subtopic.type} data-info={subtopic.needContactInfo} >
+
+                            {subtopic.title} 
+                        </a>
+                    </st>
+                </h2>
+            </template>
+            <!--/template-->
+            <!--use this template to display articles on the home screen-->
+            <!--template if:true={knowledgeviewbycount}>
+            <template for:each={subtopicarray2} for:item="subtopic" for:index="idx">                 
+                <h2 class="slds-truncate" title={subtopic.title} key={subtopic.Id}>
+                    <st>
+                        <a href={subtopic.link} onclick={handleSubtopicClick} data-id={subtopic.Id}
+                            data-name={subtopic.title} data-type={subtopic.type} data-info={subtopic.needContactInfo} >
+
+                            {subtopic.title} 
+                        </a>
+                    </st>
+                </h2>
+            </template>
+           </template-->
+
+
+        </div>
+
+    </lightning-card>
+    <!--template if:false={articlelist}-->
+    <!--show See More button for articles only on home screen and disable it for inquiries-->
+        <template if:false={disableseemore}>
+        <lightning-button variant="base" label="See More" onclick={handleSeeMoreClick} class="slds-m-left_x-small">
+        </lightning-button>
+        </template>
+    <!--/template-->
+    <!--show back button for articles on second screen-->
+    <template if:true={backbutton}>
+        <lightning-button variant="base" label="Back" onclick={handleBackNavigation} class="slds-m-left_x-small">
+        </lightning-button>
+    </template>
+</template>

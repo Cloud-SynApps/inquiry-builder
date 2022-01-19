@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Custom File Uploader">
+        <p id="encKey">Encryption Key: {encryptionKey}</p>
+            <div style="margin-left:4%">
+                <div>
+                    <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file" multiple></lightning-input>
+                </div><br/>
+                <div class="slds-text-body_small slds-text-color_error">{fileName}
+                <template if:true={showLoadingSpinner}>
+                        <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+                    </template>
+                </div><br/>
+                <div>
+                    <lightning-button class="slds-m-top--medium" label="Encrypt & Upload" onclick={handleSave} variant="brand" disabled={isTrue}></lightning-button>
+                </div>
+            </div><br/><br/>
+
+            <section id="results">
+                Download results: {downloadUrl}
+                <ul id="download-links">
+                </ul>
+            </section>
+
+            <!-- Datatable to show the related files of the record -->
+                <!--lightning-card title="Related Files of the record" icon-name="standard:account">
+                    <div style="width: auto;">
+                        <template if:true={data}>
+                                <lightning-datatable
+                                        data={data}
+                                        columns={columns}
+                                        key-field="id"
+                                        onrowselection={getSelectedRecords}>
+                                </lightning-datatable>
+                        </template>
+                    </div>
+                </lightning-card-->
+    
+        </lightning-card>
+</template>

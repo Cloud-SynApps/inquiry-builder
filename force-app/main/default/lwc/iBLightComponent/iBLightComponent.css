@@ -1,0 +1,13 @@
+.wrap {
+    /*
+    padding: 0;
+    overflow: hidden;
+    */
+}
+
+.frame {
+    width: 80%;
+    border: 1px solid black;
+    -webkit-transform: scale(1.25);
+    -webkit-transform-origin: 0 0;
+}

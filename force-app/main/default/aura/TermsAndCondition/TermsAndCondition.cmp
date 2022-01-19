@@ -1,0 +1,65 @@
+<aura:component implements="lightning:availableForFlowScreens,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!--use boolean attribute for Store true/false value,
+    make default to "false" so modal box are not display on the load of component. 
+    --> 
+    <aura:attribute name="termsandcondition" type="boolean" default="false" access="global"/>
+     <aura:attribute name="isOpen" type="boolean" default="false"/>
+    
+    <!--Use "slds-m-around_xx-large" class to add standard X-Large padding to the component--> 
+    <div class="slds-m-around_xx-large">
+        
+        <lightning:button variant="brand"
+                          label="Read User Terms and Conditions"
+                          title="User Terms and Conditions"
+                          onclick="{! c.openModel }" />
+        <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+        <aura:if isTrue="{!v.isOpen}">
+            
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">User Terms and Conditions</h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b>Every person who accesses the Inquiry Builder application ("User" or "You") agrees to
+the Terms of Use and to the fact that the Cloud Synapps Inc. may amend these terms
+from time to time and reserves the right, at its discretion, to change, modify, add, or
+remove portions of these terms at any time. Your continued use of the Solution Explorer
+application following the posting of changes to these terms will mean you accept these
+changes.
+Accuracy of the Materials
+Users who use, copy, print or use the information, documents, resources, tools, and other
+materials published on the Inquiry Builder (together, “Materials”) are responsible for
+checking whether those Materials are updated, amended or removed at any point within
+the Inquiry Builder or on any website belonging to the Company or partners.
+
+                            </b>
+                        </p>
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" 
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                        <lightning:button variant="brand" 
+                                          label="I Accept and Agree"
+                                          title="I Accept and Agree"
+                                          onclick="{! c.acceptagree }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+    </div>
+</aura:component>

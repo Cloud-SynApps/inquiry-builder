@@ -1,0 +1,19 @@
+<template>
+<lightning-card>
+    <h3 slot="title">
+    <lightning-icon icon-name="utility:connected_apps" size="small">
+
+    </lightning-icon>
+    </h3>
+  <p class="slds-p-horizontal_small">
+<lightning-button label="send data to child" varient="brand" onclick={sendDataToChild}></lightning-button>
+
+  </p>
+
+
+
+
+
+</lightning-card>    
+<c-child text-message={message}></c-child>
+</template>

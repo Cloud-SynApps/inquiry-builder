@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute name='topicDescription' label='topicDescription'/>
+    <design:attribute name='seltopic' label='seltopic'/>
+</design:component>

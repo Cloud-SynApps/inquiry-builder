@@ -1,0 +1,23 @@
+.div-container{
+    height: 400px;
+    width: fit-content;
+    box-sizing: border-box;
+}
+
+.div-box{
+    height: 300px;
+    width: 700px;
+    box-sizing: content-box;
+}
+
+.div-container{
+    height: 400px;
+    width: fit-content;
+    box-sizing: border-box;
+}
+
+.div-box2{
+    height: 300px;
+    width: 700px;
+    box-sizing: content-box;
+}

@@ -1,0 +1,14 @@
+<template>
+    <lightning-layout multiple-rows="true" pull-to-boundary="medium">
+        <template for:each={elementList} for:item="element">
+            <lightning-layout-item
+                key={element.id}
+                size={element.size}
+                class="slds-p-around_x-medium"
+                padding="horizontal-medium"
+              >
+              <c-i-b-element element={element}></c-i-b-element>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

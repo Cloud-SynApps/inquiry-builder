@@ -1,0 +1,33 @@
+<template>
+    <div style="width: 320px;">
+        <lightning-vertical-navigation>
+            <lightning-vertical-navigation-section label="Resources using href">
+            <template if:true={responseReceived}>
+                <ul>
+                    <template for:each={hrefs} for:item="href">
+                        <li key={href.id}>
+                            <lightning-tile label={href.IB_URL__c} type="url">
+                                <lightning-icon slot="url" icon-name="utility:new_window"></lightning-icon>
+                                <p class="slds-truncate" title={href.name}>href.name</p>
+                            </lightning-tile>
+                        </li>
+                    </template>
+                </ul>
+
+                <lightning-vertical-navigation-item
+                    label="Limitation Periods"
+                    name="Limitation Periods"
+                    href="https://civilresolutionbc.ca/wp-content/uploads/2019/01/ALL-P002-2-Limitation-Periods.pdf">
+                </lightning-vertical-navigation-item>
+
+                <lightning-vertical-navigation-item
+                    label="CRT Decisions"
+                    name="Decisions"
+                    href="http://decisions.civilresolutionbc.ca/crt/crtd/en/nav_date.do">
+                </lightning-vertical-navigation-item>
+
+                </template>
+            </lightning-vertical-navigation-section>
+        </lightning-vertical-navigation>
+    </div>
+</template>

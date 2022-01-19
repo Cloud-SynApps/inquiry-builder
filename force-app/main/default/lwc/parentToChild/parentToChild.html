@@ -1,0 +1,14 @@
+<template>
+    <h1>Parent</h1>
+    <!--<c-parent-to-child-c-cmp get-value-from-parent={value}></c-parent-to-child-c-cmp> -->
+    <lightning-card>
+        <c-parent-to-child-c-cmp ontextchange={childTextHandler}></c-parent-to-child-c-cmp>
+
+        <div style="width: 100%; padding: 1%; font-size: 43px;">
+            <lightning-card 
+              style="width: 100%; text-align:center;">
+                <h1>{childText}</h1>
+            </lightning-card>
+        </div>
+    </lightning-card>
+</template>

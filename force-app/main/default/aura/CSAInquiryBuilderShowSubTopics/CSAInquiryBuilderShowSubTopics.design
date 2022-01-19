@@ -1,0 +1,7 @@
+<design:component>
+	<design:attribute name='InquiryTopic' label ='InquiryTopic'/>
+    <design:attribute name='subtopic' label ='subtopic'/>
+    <design:attribute name='level' label ='level'/>
+    <design:attribute name='nexttopicenabled' label='nexttopicenabled'/>
+    <design:attribute name='stepid' label ='stepid'/>
+</design:component>

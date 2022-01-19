@@ -1,0 +1,12 @@
+<template>
+    <h2>Child</h2>
+    <!-- <p label={getvalueFromParent}>{getvalueFromParent}</p> -->
+    <div style="width: 100%; padding: 1%;">
+        <lightning-input 
+         style="width: 100%;" value={inputText}
+         type="text" onchange={textChangeHandler}
+         placeholder="start typing..."
+         >
+        </lightning-input>
+    </div>
+</template>

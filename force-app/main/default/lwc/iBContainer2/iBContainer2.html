@@ -1,0 +1,36 @@
+<template>
+    <template if:true={inquiryQ}>
+        <div class="div-container">
+            <div class="div-box">
+                <lightning-card class="slds-m-around_medium" title="Question">
+                    <template for:each={qList.data} for:item="ques">
+                        <p class="slds-m-left_medium" key={ques.Id}>
+                            {ques.IB_Content__c}
+                        </p>
+                        <template for:each={ques.IB_Answers__r} for:item='answer'>
+                            <p key={answer.Id}>
+                                <lightning-input class="slds-m-left_medium" label={answer.Name} name="radios"
+                                    type="radio" onselect={inputHandler}></lightning-input>
+                            </p>
+                        </template>
+                    </template>
+                    <!-- <lightning-button class="slds-m-around_medium" variant="brand" onclick={con}>Next</lightning-button> -->
+                    <lightning-layout>
+                        <lightning-layout-item size="8">
+                            <!-- <c-i-b-next-button onclick={handleNext}></c-i-b-next-button> -->
+                            <lightning-button label="Next" onclick={Nexthandle}></lightning-button>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-card>
+            </div>
+        </div>
+    </template>
+    
+    <template if:true={inquiryNext}>
+        <div class="div-container2">
+            <div class="div-box2">
+
+            </div>
+        </div>
+    </template>
+</template>

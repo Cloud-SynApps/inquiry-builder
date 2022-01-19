@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Resources">
+    <template if:true={resources.data}>
+        <template for:each={resources.data} for:item="resource">
+            <a
+                href="#"
+                key={resources.Id}
+                onclick={handleSelect}
+            >
+                <lightning-layout>
+                    <lightning-layout-item padding="horizontal-small" onclick={resource.Name}>
+                        <p>{resource.Name}</p>
+                        <p>{resource.IB_Action__c}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </a>
+        </template>
+    </template>
+</lightning-card>
+</template>

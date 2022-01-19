@@ -1,0 +1,71 @@
+<template>
+    <lightning-card title="">
+    <div class="slds-p-around_large">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_2-of-12">
+            <lightning-radio-group name="radioGroup"
+           
+          
+          
+           
+            onchange={handleRadioChange}>
+            
+            </lightning-radio-group>
+            </div>
+ 
+            <div class="slds-col slds-size_10-of-12">
+            <template if:true={licensingFieldValue}>
+                <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Knowledge Article</strong></h3> 
+               <ul>
+                  <li>License Article 1                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>License Article 2                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>License Article 3                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>License Article 4                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+
+               </ul>
+            </template>  
+ 
+            <template if:true={permittingFieldValue}>
+                <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Knowledge Article</strong></h3> 
+                <ul>
+                  <li>Permitting Article 1                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Permitting Article 2                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Permitting Article 3                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Permitting Article 4                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+
+                 </ul>
+                </template> 
+ 
+            <template if:true={healthCareFieldValue}>
+                <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Knowledge Article</strong></h3> 
+                <ul>
+                  <li>Health Care Article 1                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Health Care Article 2                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Health Care Article 3                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Health Care Article 4                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+
+                 </ul>
+                </template> 
+ 
+            <template if:true={childWelfareFieldValue}>               
+                <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Knowledge Article</strong></h3> 
+                <ul>
+                  <li>Child Welfare Article 1                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Child Welfare Article 2                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Child Welfare Article 3                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+                  <li>Child Welfare Article 4                                   <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">Preview</a></span></li>
+
+                 </ul>
+           
+            </template> 
+ 
+           
+            </div>
+        </div> 
+                    
+               
+    </div>
+    <br/><br/>
+</lightning-card>
+ 
+</template>

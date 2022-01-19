@@ -1,0 +1,8 @@
+<template>
+    <lightning-input type="text" variant="label-hidden" class="slds-m-bottom_small" label="SMS"
+        placeholder="Send message to Zeeman" value={message} onchange={handleMessageOnChange}>
+    </lightning-input>
+    <lightning-button variant="brand" label="Send SMS" title="Send SMS" onclick={handleSMSSendClick}
+        class="slds-m-left_x-small">
+    </lightning-button>
+</template>

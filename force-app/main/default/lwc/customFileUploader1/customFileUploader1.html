@@ -1,0 +1,23 @@
+<template>
+    <h1>Upload File</h1>
+
+    <section id="key-management">
+        <p id="encKey">Encryption Key: {encryptionKey}!</p>
+        <!-- <button id="generate-key">Generate AES Key</button>
+        <lightning-button variant="brand" label="Generate AES Key" title="Primary action" onclick={generateAESKey} class="slds-m-left_x-small"></lightning-button> -->
+    </section>
+
+    <div style="margin-left:4%">
+        <div>
+            <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file" multiple></lightning-input>
+        </div><br/>
+        <div class="slds-text-body_small slds-text-color_error">{fileName}
+        <template if:true={showLoadingSpinner}>
+                <lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+            </template>
+        </div><br/>
+        <div>
+            <lightning-button class="slds-m-top--medium" label="Encrypt and Upload" onclick={handleSave} variant="brand" disabled={isTrue}></lightning-button>
+        </div>
+    </div>
+</template>

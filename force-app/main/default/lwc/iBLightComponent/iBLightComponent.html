@@ -1,0 +1,131 @@
+<!--
+  @File Name          : iBLightComponent.html
+  @Description        : 
+  @Author             : Zeeman
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 5/25/2020, 7:40:58 PM
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    5/13/2020  Zeeman     Initial Version
+-->
+<template>
+  <template if:true={showIBLight}>
+    <div class="slds-box ib-light-component">
+      <div
+        class="slds-text-heading_large slds-m-bottom_large slds-border_bottom slds-p-bottom_small"
+      >
+        {surveyName}
+      </div>
+      <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-5">
+          <div class="slds-box">
+            <span class="slds-text-body_small"
+              >Your Exploration Information</span
+            >
+            <br />
+            <span class="slds-text-body_small">Access Code: {caseNumber}</span>
+          </div>
+          <div class="slds-box slds-m-top_medium">
+            <span class="slds-text-body_small"
+              >Additional External Resources</span
+            >
+            <ul class="slds-m-around_medium slds-list_dotted">
+              <template for:each={resources} for:item="resource">
+                <li key={resource.Id} class="slds-m-bottom_x-small">
+                  <a href={resource.URL} target="_blank">
+                    {resource.name}
+                  </a>
+                </li>
+              </template>
+            </ul>
+          </div>
+          <div class="slds-box slds-m-top_medium">
+            <span class="slds-text-body_small"
+              >Knowledge Article Resources</span
+            >
+            <ul class="slds-m-around_medium slds-list_dotted">
+              <template for:each={articles} for:item="article">
+                <li key={article.articleId} class="slds-m-bottom_x-small">
+                  <a href={article.aritcleURL} target="_blank">
+                    {article.articleName}
+                  </a>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+        <template if:false={isSurveyCompleted}>
+          <div class="slds-col slds-size_4-of-5">
+            <div class="wrap">
+              <iframe
+                src={surveyURL}
+                width="100%"
+                height="800px"
+                style="border: none;"
+                class="frame"
+              >
+              </iframe>
+            </div>
+          </div>
+        </template>
+        <template if:true={isSurveyCompleted}>
+          <div class="slds-col slds-size_4-of-5">
+            <template if:true={showContactInfo}>
+              <template if:false={contactSaved}>
+                <div
+                  class="slds-p-bottom_large slds-p-left_large"
+                  style="width: 500px;"
+                >
+                  <lightning-card title="Your Contact Information">
+                    <p class="slds-p-horizontal_small">
+                      <lightning-record-edit-form object-api-name="Contact">
+                        <lightning-messages></lightning-messages>
+                        <lightning-input-field
+                          field-name="FirstName"
+                          onchange={handleContactInputChange}
+                        >
+                        </lightning-input-field>
+                        <lightning-input-field
+                          field-name="LastName"
+                          onchange={handleContactInputChange}
+                        >
+                        </lightning-input-field>
+                        <lightning-input-field
+                          field-name="MobilePhone"
+                          onchange={handleContactInputChange}
+                        >
+                        </lightning-input-field>
+                        <lightning-input-field
+                          field-name="MailingAddress"
+                          onchange={handleContactInputChange}
+                        >
+                        </lightning-input-field>
+                      </lightning-record-edit-form>
+
+                      <lightning-button
+                        variant="brand"
+                        label="Save"
+                        title="Save"
+                        onclick={handleContactSaveClick}
+                        class="slds-m-left_x-small slds-m-top_large"
+                      >
+                      </lightning-button>
+                    </p>
+                  </lightning-card>
+                </div>
+              </template>
+              <template if:true={contactSaved}>
+                Your contact information saved, your reference number:
+                {caseNumber}
+              </template>
+            </template>
+            <!--template if:false={showContactInfo}>
+                            You submitted the inquiry: {surveyName}
+                        </!--template -->
+          </div>
+        </template>
+      </div>
+    </div>
+  </template>
+</template>

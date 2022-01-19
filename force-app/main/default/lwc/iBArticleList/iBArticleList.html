@@ -1,0 +1,57 @@
+<template >
+    <template if:true={jsonData}>
+    <lightning-card icon-name="utility:cases">
+         <pagetitle slot="title">{pageTitle}</pagetitle>
+        <div class="slds-card__body_inner">
+            <template if:true={jsonData}>
+
+                <div class="slds-border_bottom slds-m-bottom_small"></div>
+                <div class="slds-clearfix">
+                    <!--div class="slds-float_left">
+                        <heading>Knowledge Articles</heading>
+                    </div-->
+                    <div class="slds-float_right">
+                        <lightning-input type="search" onchange={handleKnowledgeSearchTermChange} variant="label-hidden"
+                            class="slds-m-bottom_small" label="Search" placeholder="Search for knowledge topics"
+                            value={ksearchTerm} style="width: 300px;">
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <lightning-layout multiple-rows="true" pull-to-boundary="small">
+                    <!--template for:each={knowledgeTopics} for:item="topic">
+                        
+                        <lightning-layout-item key={topic.Id} size="6" class="slds-p-around_x-small">
+                            <c-i-b-topic-tile topic={topic} articlelist="true"></c-i-b-topic-tile>
+                        </lightning-layout-item>
+                    </template-->
+                    <template for:each={subTopicArray} for:item="subtopic">
+                        
+                        <lightning-layout-item key={subtopic.Id} size="6" class="slds-p-around_x-small">
+                            <!--h2 class="slds-truncate" title={topic.title} key={subtopic.Id}-->
+                                <st>
+                                    <a href={subtopic.link} onclick={handleSubtopicClick} data-id={subtopic.Id}
+                                        data-name={subtopic.title} data-type={subtopic.type} data-info={subtopic.needContactInfo} >
+            
+                                        {subtopic.title}
+            
+                                    </a>
+                                </st>
+                            <!--/h2-->
+                            <!--c-i-b-topic-tile topic={topic} articlelist="true"></c-i-b-topic-tile-->
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+
+
+            </template>
+        </div>
+        <template if:true={errMsg}>
+            <div class="slds-text-color_error">
+                An error occurred while loading Inquery Builder: <br />
+                {errMsg}
+            </div>
+        </template>
+    </lightning-card>
+</template>
+</template>

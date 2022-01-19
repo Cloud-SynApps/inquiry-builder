@@ -1,0 +1,43 @@
+<template>
+    <template if:true={loaded}>
+        <lightning-layout multiple-rows="true">
+            <template if:true={question}>
+                <lightning-layout-item padding="around-small" size="12">
+                        <div class="page-section page-header">
+                            <span class="slds-page-header__title">{question.value}</span>
+                        </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="12">
+                    <lightning-radio-group
+                        name="radioButtonGroup"
+                        label={question.value}
+                        options={question.options}
+                        value={selectedOptions}
+                        onchange={handleChange}>
+                    </lightning-radio-group>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="12">
+                    <div class="page-section page-footer">
+                        <lightning-button-group>
+                        <lightning-button label="Back" onclick={handlePrevious}></lightning-button>
+                        <lightning-button label="Next" onclick={handleNext}></lightning-button>
+                    </lightning-button-group>
+                    </div>
+                </lightning-layout-item>
+            </template>
+            <template if:true={result}>
+                <lightning-record-view-form
+                    record-id="ka06g000001cyJuAAI"
+                    object-api-name="Knowledge__kav">
+                <div class="slds-box">
+                    <lightning-output-field variant="label-hidden" field-name="Body__c">
+                    </lightning-output-field>
+                </div>
+            </lightning-record-view-form>
+            </template>
+        </lightning-layout>
+    </template>
+    <template if:false={loaded}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+</template>

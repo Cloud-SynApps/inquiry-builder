@@ -1,0 +1,171 @@
+<template>
+  <lightning-card>
+    <div class="slds-p-around_large">
+      <div class="slds-grid slds-wrap">
+  <div class="slds-col slds-size_2-of-4">
+    <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Knowledge Article</strong></h3> 
+    
+    <ul ><template for:each={arr} for:item="listVariable" for:index="index">
+            
+        <li key={listVariable.index}>{listVariable}
+          
+       <!-- <lightning-button label="Preview" onclick={showModal}> </lightning-button>
+       <lightning-button label="Preview" name="listVariable" onsuccess={handleSuccess}></lightning-button>-->
+       <div class="space">
+       <lightning-button variant="base" label="Preview" data-id={listVariable} onclick={handleSuccess}> </lightning-button>
+       </div>
+            
+          
+        </li>
+     </template>
+   </ul>
+   </div>
+  </div>
+  </div>
+</lightning-card>
+
+
+<template if:true={isModalOpen}>  
+  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+  aria-describedby="modal-content-id-1" class={modalClass}>
+  <div class="slds-modal slds-fade-in-open slds-backdrop">  
+    <div class="slds-modal__container">  
+
+      <!--HEADER Section-->   
+        <div class="slds-modal__header">  
+        <lightning-button-icon icon-name="utility:close" alternative-text="Close this window" size="large"  
+          variant="bare-inverse" onclick={closeModal} class="slds-modal__close">  
+        </lightning-button-icon>  
+        <div class="slds-col slds-size_10-of-12">
+
+
+        <!--Licensing part-->
+         <template if:true={licensing1FieldValue}>
+             
+          <div class="LA1">
+            <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Licensing 1</strong></h3> 
+
+           </div> 
+             <p>How to start a blog and make money. Easy Guide Step-By-Step for Beginners follow given points. What is blog and how to start your blog? Blog is a platform where you can share your personal experience that you have in expertise. <span class="readMore"><a href="https://www.w3web.net/blog/" target="_blank" rel="noopener noreferrer">more...</a></span></p>
+             
+              <lightning-card title="Watch to know more">
+<!---
+                <video width="320" height="240" controls>
+                  <source src=”http://techslides.com/demos/sample-videos/small.ogv” type=video/ogg>
+                  <source src="demo.mp4" type=video/mp4>
+                </video>
+              
+
+              <video width="320" height="240" controls>
+                <source src="/vedio/demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>-->
+              
+            <iframe width="300" height="150" src="https://www.youtube.com/embed/SLaWOkc3bC8"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen  ></iframe>
+             </lightning-card>
+            
+         </template>  
+
+         <template if:true={licensing2FieldValue}>
+         
+             <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Licensing 2</strong></h3> 
+          <p>An easy way to learn step-by-step online salesforce free tutorial from <strong>w3web.net</strong>, To learn <span class="readMore"><a href="https://www.w3web.net/tutorial/" target="_blank" rel="noopener noreferrer">more...</a></span></p> 
+         </template> 
+
+         <template if:true={licensing3FieldValue}>
+           
+             <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Licensing 3</strong></h3> 
+           
+            <p>Many people writing a Blog or Article. There can be multiple pages in a single article, if you have not good hand typing speed you will be face so many difficulty. If you want to write a article English or Hindi very fast than go through the “Remote Mouse App”. <span class="readMore"><a href="https://www.w3web.net/technical-guide/" target="_blank" rel="noopener noreferrer">more...</a></span></p> 
+         </template> 
+
+         <template if:true={licensing4FieldValue}>  
+                     
+             <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Licensing 4</strong></h3> 
+            
+             <p>The Lightning Component framework is a UI framework for developing web apps for mobile and desktop devices. It's a modern framework for building single-page applications with dynamic, responsive user interfaces for Lightning Platform apps. To live demo project learn  <span class="readMore"><a href="https://www.w3web.net/tutorial/lightning-component/" target="_blank" rel="noopener noreferrer">more...</a></span></p> 
+         </template> 
+
+        <!-- Permitting Part-->
+        <template if:true={permitting1FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Permitting 1</strong></h3> 
+          <p> Permitting 1 Value</p>
+            
+      </template>  
+
+      <template if:true={permitting2FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Permitting 2</strong></h3> 
+          <p> Permitting two value</p> 
+      </template> 
+
+      <template if:true={permitting3FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Permitting 3</strong></h3> 
+          <p>Permitting three value</p> 
+      </template> 
+
+      <template if:true={permitting4FieldValue}>               
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Permitting 4</strong></h3> 
+          <p>Permitting four value</p> 
+      </template> 
+
+
+        <!-- Health care Part-->
+        <template if:true={healthCare1FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Health care 1</strong></h3> 
+          <p> Health care one Value</p>
+            
+      </template>  
+
+      <template if:true={healthCare2FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Health care 2</strong></h3> 
+          <p> Health care two value</p> 
+      </template> 
+
+      <template if:true={healthCare3FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Health care 3</strong></h3> 
+          <p>Health care three value</p> 
+      </template> 
+
+      <template if:true={healthCare4FieldValue}>               
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Health care 4</strong></h3> 
+          <p>Health care four value</p> 
+      </template> 
+        <!--Child Welfare Part-->
+
+        <template if:true={childWelfare1FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Child Welfare 1</strong></h3> 
+          <p> Child Welfare 1 Value</p>
+            
+      </template>  
+
+      <template if:true={childWelfare2FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Child Welfare 2</strong></h3> 
+          <p> Child Welfare two value</p> 
+      </template> 
+
+      <template if:true={childWelfare3FieldValue}>
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Child Welfare 3</strong></h3> 
+          <p>Child Welfare three value</p> 
+      </template> 
+
+      <template if:true={childWelfare4FieldValue}>               
+          <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Child Welfare 4</strong></h3> 
+          <p>Child Welfare four value</p> 
+      </template> 
+
+         
+         </div></h2>  
+      </div>  
+     
+      <div class="slds-modal__footer">  
+        <lightning-button icon-name="utility:close" label="close" variant="brand" onclick={closeModal}>  
+        </lightning-button>  
+      </div>  
+    </div>  
+  </div> 
+  
+  
+</section>
+</template>  
+
+</template>

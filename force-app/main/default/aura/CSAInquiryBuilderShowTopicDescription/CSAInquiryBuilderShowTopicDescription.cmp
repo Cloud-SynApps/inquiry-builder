@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:handler event="c:CSAInquiryBuilderApplEvent" action="{!c.component2Event}"/>
+    <aura:attribute name="topicdescription" type="string"/>
+    <!--aura:handler name='init' value='{!this}' action='{!c.doInit}'/>
+    <aura:method name="showdescription" action="{!c.show}">
+        <aura:attribute name="description" type="string"/>
+    </aura:method-->
+    <div class="uiOutputRichText" linkify="true" >
+     <aura:unescapedHtml value="{!v.topicdescription}"/>
+</div>
+      
+   
+</aura:component>

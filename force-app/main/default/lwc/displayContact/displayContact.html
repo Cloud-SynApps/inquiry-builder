@@ -1,0 +1,43 @@
+<template>
+    <template if:true={contactfound}>
+    <lightning-card title="Contact Manager">
+        <lightning-layout>
+            <lightning-layout-item size="6" padding="around-small">
+                <lightning-card title="View Contact">
+                    <lightning-record-form record-id= {conId} object-api-name="Contact"  layout-type="Compact" columns="2" mode="view" 
+    onsuccess={handleSuccess} onsubmit={handleSubmit}>
+
+                   <div class="slds-box slds-theme_default">
+                    <p>
+                        <lightning-output-field field-name='FirstName' type="Edit"></lightning-output-field>
+                    </p>
+                    <p>
+                        <lightning-output-field field-name='LastName'></lightning-output-field>
+                    </p>
+                    <p>
+                        <lightning-output-field field-name='Phone'></lightning-output-field>
+                    </p>
+                    <p>
+                        <lightning-output-field field-name='Email'></lightning-output-field>
+                    </p>
+                    <p>
+                        <lightning-output-field field-name='Department'></lightning-output-field>
+                    </p>
+                    <p>
+                        <lightning-output-field field-name='Description'></lightning-output-field>
+                    </p>
+                    <p>
+                        <lightning-button type="FULL" variant="brand" name="edit" label="Edit Contact">
+                        </lightning-button>
+                    </p>
+    
+                   </div>
+                </lightning-record-form>
+                        
+                   
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
+</template>

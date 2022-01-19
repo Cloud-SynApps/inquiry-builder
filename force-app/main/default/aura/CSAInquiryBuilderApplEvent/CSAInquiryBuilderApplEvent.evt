@@ -1,0 +1,4 @@
+<aura:event type="Application" description="Show Description">
+        <aura:attribute name="displaytopicdescription" type="String"/>   
+    	<aura:attribute name="titlekeyword" type="String"/>
+</aura:event>

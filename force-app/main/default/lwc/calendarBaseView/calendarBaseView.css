@@ -1,0 +1,15 @@
+.itemcustompadding{
+    padding: 5px;
+}
+.external-events {
+    position: relative;
+    width: 150px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    background: #eee;
+  }
+  
+  .external-events .fc-event {
+    margin: 1em 0;
+    cursor: move;
+  }

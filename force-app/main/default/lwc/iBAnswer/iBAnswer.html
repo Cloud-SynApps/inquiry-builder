@@ -1,0 +1,9 @@
+<template>
+    <lightning-card class="slds-m-around_medium">
+        <template for:each={answers.Id} for:item='answer'>
+            <p key={answer.Id}>
+                <lightning-input class="slds-m-left_medium" label={answer.answerName} name="radios" type="radio" ></lightning-input>
+            </p>
+        </template>
+    </lightning-card>
+</template>

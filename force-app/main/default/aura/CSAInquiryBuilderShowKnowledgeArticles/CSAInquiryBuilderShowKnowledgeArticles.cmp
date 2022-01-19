@@ -1,0 +1,13 @@
+<aura:component controller="CSAInquiryBuilderGetKnowledgeArticles" implements="lightning:availableForFlowScreens,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="titlekeyword" type="string"/>
+    <aura:attribute type="Knowledge__kav[]" name="knowledgearticles"/>
+    <aura:attribute name="mycolumns" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!--aura:handler name="test" value="{!this}" action="{!c.dotest}"/-->
+    <lightning:datatable data="{!v.knowledgearticles}"
+                         columns="{!v.mycolumns}"
+                         keyField="id"
+                         hideCheckboxColumn="true" />
+                   
+	
+</aura:component>

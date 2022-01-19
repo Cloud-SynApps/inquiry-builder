@@ -1,0 +1,24 @@
+<aura:component controller="CSAInquiryBuilderGetKnowledgeArticles" implements="lightning:availableForFlowScreens,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name='InquiryTopic' type ='string'/>
+    <aura:attribute name='subtopic' type ='string'/>
+    <aura:attribute name='stepid' type ='string'/>
+    <aura:attribute name='level' type ='integer'/>
+    <aura:attribute name='seltopic' type ='string'/>
+    <aura:attribute name='value' type = 'string'/>
+    <aura:attribute name='subtopiclist' type='CSA_Inquiry_Sub_Topics__c[]'/>
+    <aura:attribute name='options' type='List'/>
+    <aura:attribute name='topicDescription' type='string'/>
+    <aura:attribute name='nexttopicenabled' type='boolean'/>
+    <aura:handler name='init' value='{!this}' action='{!c.doInit}'/>
+    
+       <lightning:radioGroup aura:id="mygroup"
+                             name="radioButtonGroup"
+                          label="Select a topic"
+                          options="{!v.options}"
+                          value="{!v.value}"
+                          type="radio"
+                          required="true"
+                          onchange="{!c.handlechange}"/>
+    
+ <aura:registerEvent name="ShowDescription" type="c:CSAInquiryBuilderApplEvent"/>   
+</aura:component>

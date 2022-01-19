@@ -1,0 +1,35 @@
+<!-- <template>
+    <lightning-card title="Question">
+        
+                <template for:each={QWrapperList.data} for:item="wrapper">
+                    <p key={wrapper.Id}></p>
+                    {wrapper.Name}
+                </template>
+            
+    </lightning-card>
+</template> -->
+
+
+<!-- <template>
+    <lightning-card title="Question">
+        
+                <template if:true={QWrapperList.data}>
+                    <p key={wrapper.questionId}></p>
+                    <p>{wrapper.questionContent}</p>
+                </template>
+            
+    </lightning-card>
+</template> -->
+
+
+
+<template>
+    <lightning-card title="Question">
+        <template for:each={wrapperList.data} for:item="wrapper" >
+            <p class="slds-m-left_medium" key={wrapper.questionId}>
+                 {wrapper.questionContent}
+            </p> 
+        </template>
+        <lightning-button onclick={con}></lightning-button>
+    </lightning-card>
+</template>

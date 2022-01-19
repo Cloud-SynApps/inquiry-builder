@@ -1,0 +1,18 @@
+<aura:component controller="CSAInquiryBuilderGetKnowledgeArticles" implements="lightning:availableForFlowScreens,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute type='CSA_Inquiry_Topics__c[]' name='Topics' />
+    <aura:attribute type='string' name='topicDescription'/>
+    <aura:attribute type='string' name='seltopic'/>
+    
+    <aura:handler name='init' value='{!this}' action='{!c.doInit}'/>
+    <!--lightning:radioGroup aura:id="assignmentOptions" name="radioButtonGroup" options="{!v.Topics}" value="{!v.Topics.Name}"/-->
+   
+    <lightning:select name="select" label="Select a topic of your choice" required="true" onchange="{!c.changeTopic}">
+        <option value="">--None--</option>
+    	<aura:iteration items="{!v.Topics}" var="topic">
+        	<option value="{!topic.Name}" text="{!topic.Name}"></option>
+        </aura:iteration> 
+    </lightning:select>
+
+    
+    <aura:registerEvent name="ShowDescription" type="c:CSAInquiryBuilderApplEvent"/>
+</aura:component>

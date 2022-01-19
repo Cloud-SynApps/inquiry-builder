@@ -1,0 +1,42 @@
+<template>
+  IB App
+  <template if:true={addContact}>
+    <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+      <lightning-record-edit-form object-api-name="Contact">
+        <lightning-messages></lightning-messages>
+        <lightning-input-field field-name="FirstName" onchange={handleContactInputChange}>
+        </lightning-input-field>
+        <lightning-input-field field-name="LastName" onchange={handleContactInputChange}>
+        </lightning-input-field>
+        <lightning-input-field field-name="MobilePhone" onchange={handleContactInputChange}>
+        </lightning-input-field>
+        <lightning-input-field field-name="MailingAddress" onchange={handleContactInputChange}>
+        </lightning-input-field>
+      </lightning-record-edit-form>
+    </div>
+
+  </template>
+  <br>
+  <lightning-layout multiple-rows="true" pull-to-boundary="small">
+    <template for:each={surveys} for:item="survey">
+      <lightning-layout-item key={survey.Id} size="4" class="slds-p-around_x-small">
+        <a herf="#" onclick={handleSurveyNameClick} data-developer-name={survey.DeveloperName}
+          data-id={survey.Id}>{survey.Name}</a>
+        <br />
+      </lightning-layout-item>
+    </template>
+  </lightning-layout>
+
+  <lightning-formatted-text value=" Case Number: " linkify>
+  </lightning-formatted-text>
+
+  <div>
+    {caseNumber}
+  </div>
+  <div>
+    <template if:true={surveyURL}>
+      <iframe src={surveyURL} width="100%" height="800px" style="border:none;">
+      </iframe>
+    </template>
+  </div>
+</template>

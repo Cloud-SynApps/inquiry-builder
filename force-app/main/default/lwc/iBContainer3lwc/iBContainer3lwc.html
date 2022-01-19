@@ -1,0 +1,55 @@
+<template>
+ <template if:true={inquiryQ}>
+      <div class="div-container">
+          <div class="div-box">
+
+              <lightning-record-view-form record-id={recordqId} object-api-name={apiName}>
+                  <lightning-output-field field-name="Name" variant="label-hidden"></lightning-output-field>
+               </lightning-record-view-form>
+          
+          
+            <!-- answer -->
+            <div style="display: flex;">
+                <input type="radio" id="opt1" name="option1" value="opt1">
+                <label for="opt1">
+                    <lightning-record-view-form record-id={recordId} object-api-name={ApiName}>
+                        <lightning-output-field field-name="Name" variant="label-hidden"></lightning-output-field>
+                    </lightning-record-view-form>
+                    <!-- {record} -->
+                    </label><br>
+            </div>
+
+            <div style="display: flex;">
+                <input type="radio" id="op2" name="option2" value="opt2">
+                <label for="opt2">
+                    <lightning-record-view-form record-id={record2Id} object-api-name={ApiName}>
+                        <lightning-output-field field-name="Name" variant="label-hidden"></lightning-output-field>
+                    </lightning-record-view-form>
+                    <!-- {record} -->
+                    </label><br>
+            </div>
+                
+            
+                <lightning-button label="Next" onclick={Nexthandle}></lightning-button>
+        
+          </div>
+
+      </div>
+ </template>
+
+<!-- page-2 -->
+ <template if:true={inquiryNext}>
+    <div class="div-container2">
+        <div class="div-box2">
+
+
+          
+              <lightning-button label="Finish" onclick={Finishandle}></lightning-button>
+      
+        </div>
+
+    </div>
+</template>
+
+
+</template>

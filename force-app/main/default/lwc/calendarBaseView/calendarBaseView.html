@@ -1,0 +1,100 @@
+<template>
+{timeZone}
+    <lightning-card>
+      <div style='margin-left:15px;margin-right:15px'>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-12">
+            <div class='external-events'>
+                <p>
+                    <strong>Draggable Events</strong>
+                </p>
+                <div draggable="true" class='fc-event'>a</div>
+                <div draggable="true" class='fc-event'>b</div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_11-of-12">
+            <div class='calendar-container'>
+                <lightning-button variant="brand" label="add event" title="add event" onclick={handleEventAddClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                  
+                <lightning-button variant="brand" label="populate slots" title="" onclick={handlePopulateSlots}
+                    class="slds-m-left_x-small"></lightning-button>
+                <div style="padding:15px">    
+                <div class="fullcalendar" lwc:dom="manual"> </div>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div if:true={isModalOpen}>
+       
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small">
+                        </lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Book Meeting
+                    </h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-card>
+                        <div style='min-height:250px'>
+                
+                    <lightning-layout >
+                        <lightning-layout-item  class='itemcustompadding' size='4'>
+                            <lightning-input disabled={isLoading} type="date" autocomplete="off" name="day" label="Date" value={selectedEvt.day} required 
+                            class="validValue inputDate" onchange={handleFormInputChange}></lightning-input>
+                
+                        </lightning-layout-item>
+                        <lightning-layout-item class='itemcustompadding' size='4'> 
+                            <lightning-input disabled={isLoading} type="time" autocomplete="off" name="starttime" label="Start Time" value={selectedEvt.starttime} required 
+                            class="validValue inputStart" min={minTimePicker} max={maxTimePicker} onchange={handleFormInputChange}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item class='itemcustompadding' size='4'>
+                            <lightning-input disabled={isLoading} type="time" autocomplete="off" name="endtime" label="End Time" value={selectedEvt.endtime} required
+                            class="validValue inputEnd" min={minTimePicker} max={maxTimePicker}  onchange={handleFormInputChange}></lightning-input>
+                
+                        </lightning-layout-item>
+                    </lightning-layout>
+                       
+                    <lightning-layout >
+                        <lightning-layout-item class='itemcustompadding' size='8'>
+                            <lightning-input disabled={isLoading} type="text" autocomplete="off" required name="title" label="Meeting Title" value={selectedEvt.title} 
+                            class="validValue inputTitle"  onchange={handleFormInputChange}></lightning-input>
+                        </lightning-layout-item>
+                        
+                    </lightning-layout>   
+                    <div if:true={isLoading}>
+                        <div class="exampleHolder">
+                            <lightning-spinner variant="brand" alternative-text="Loading" size="large"></lightning-spinner>
+                        </div>
+                        </div>
+                       
+                    </div>
+                    </lightning-card>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" disabled={isLoading} onclick={closeModal} title="Cancel">Cancel</button>
+                    <template if:true={isdeletable}>
+                    <button class="slds-button slds-button_brand" disabled={isLoading} onclick={handleDeleteMeetingClick} title='Delete Meeting'>Delete Meeting</button>
+</template>
+                    <button class="slds-button slds-button_brand" disabled={isLoading} onclick={handleSubmitBooking} title={meetingStatus}>{meetingStatus}</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</div>
+</lightning-card>
+</template>

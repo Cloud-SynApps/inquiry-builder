@@ -1,0 +1,115 @@
+<template>
+  <lightning-card>
+    <div class="slds-p-around_large">
+      <div class="slds-grid slds-wrap">
+  <div class="slds-col slds-size_6-of-12">
+    <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Knowledge Article</strong></h3> 
+    
+    <ul><template for:each={arr} for:item="listVariable" for:index="index">
+        
+        <li key={listVariable.index}>{listVariable}
+
+         
+         <lightning-button variant="base" label="Preview" title="Preview" onclick={showModal}
+       class="slds-m-left_x-small"></lightning-button>
+
+           
+        </li>
+        
+      </template></ul>
+   
+  </div>
+  </div>
+  </div>
+</lightning-card>
+
+
+<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+aria-describedby="modal-content-id-1" class={modalClass}>
+<div class="slds-modal__container">
+   <header class="slds-modal__header">
+      <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+         onclick={closeModal}>
+         <lightning-icon icon-name="utility:close" alternative-text="Close Modal" variant="inverse" size="small">
+         </lightning-icon>
+      </button>
+      <h2 id="modal-heading-01" class="slds-text-heading_medium slds-modal__title slds-hyphenate">
+        Licensing Article 1
+      </h2>
+   </header>
+   <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+      
+         <h3><strong>General Provisions</strong></h3>
+    
+        <p> For the purpose of this Agreement, import licensing is defined as administrative
+         procedures1 used for the operation of import licensing regimes requiring the submission of
+         an application or other documentation (other than that required for customs purposes) to
+         the relevant administrative body as a prior condition for importation into the customs
+         territory of the importing Member.</p>
+         (footnote original)<p><b>1</b> Those procedures referred to as "licensing" as well as other similar
+         administrative procedures.</p><p><b>2</b>. Members shall ensure that the administrative procedures used to implement import
+         licensing regimes are in conformity with the relevant provisions of GATT 1994 including its
+         annexes and protocols, as interpreted by this Agreement, with a view to preventing trade
+         distortions that may arise from an inappropriate operation of those procedures, taking into
+         account the economic development purposes and financial and trade needs of developing
+         country Members.2
+         (footnote original)
+         2 Nothing in this Agreement shall be taken as implying that the basis,
+         scope or duration of a measure being implemented by a licensing procedure is subject to
+         question under this Agreement.</p><p><b>3</b>. The rules for import licensing procedures shall be neutral in application and
+         administered in a fair and equitable manner.</p><p> <b>4</b>. (a) The rules and all information concerning procedures for the submission of
+         applications, including the eligibility of persons, firms and institutions to make such
+         applications, the administrative body(ies) to be approached, and the lists of products subject
+         to the licensing requirement shall be published, in the sources notified to the Committee on
+         Import Licensing provided for in Article 4 (referred to in this Agreement as "the
+         Committee"), in such a manner as to enable governments3 and traders to become
+         acquainted with them. Such publication shall take place, whenever practicable, 21 days prior
+         to the effective date of the requirement but in all events not later than such effective date.
+         Any exception, derogations or changes in or from the rules concerning licensing procedures
+         or the list of products subject to import licensing shall also be published in the same manner
+         and within the same time periods as specified above. Copies of these publications shall also
+      </p>
+   </div>
+   <footer class="slds-modal__footer">
+      <lightning-button variant="neutral" label="Close" title="Close" onclick={closeModal}>
+      </lightning-button>
+
+   </footer>
+</div>
+</section>
+<div class={modalBackdropClass}></div>
+
+
+
+
+</template>
+
+
+
+
+      <!---<div class="slds-col slds-size_6-of-12">
+            <template if:true={licensingFieldValue}>
+                <h3 class="slds-text-heading_medium slds-text-color--error"><strong>Knowledge Article</strong></h3> 
+               <ul>
+                  <li>License Article 1                          
+                       <span class="readMore"><lightning-button variant="base" label="Preview" title="Preview" onclick={showModal}
+                    class="slds-m-left_x-small"></lightning-button></span>
+                  </li>
+  
+                  <li>License Article 2                  
+                    <span class="readMore"><lightning-button variant="base" label="Preview" title="Preview" onclick={showModal}
+                        class="slds-m-left_x-small"></lightning-button></span>
+                        </li>           
+                  
+                  <li>License Article 3        
+                    <span class="readMore"><lightning-button variant="base" label="Preview" title="Preview" onclick={showModal}
+                        class="slds-m-left_x-small"></lightning-button></span></li>
+                                                   
+                  <li>License Article 4      
+                    <span class="readMore"><lightning-button variant="base" label="Preview" title="Preview" onclick={showModal}
+                        class="slds-m-left_x-small"></lightning-button></span></li>
+                                                    
+
+               </ul>
+            </template>  
+            </div>-->
