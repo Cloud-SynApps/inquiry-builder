@@ -14,11 +14,15 @@
     <tabs>CSA_Inquiry_Question__c</tabs>
     <tabs>CSA_Inquiry_Template__c</tabs>
     <tabs>CSA_Inquiry__c</tabs>
+    <tabs>CSA_Inquiry_Response__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Inquiry_Builder_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
             <tab>CSA_Inquiry_Question__c</tab>
+        </mappings>
+        <mappings>
+            <tab>CSA_Inquiry_Response__c</tab>
         </mappings>
         <mappings>
             <tab>CSA_Inquiry_Template__c</tab>
