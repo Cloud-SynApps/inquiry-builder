@@ -5,6 +5,7 @@
         <members>CSA_Question_Definition__c</members>
         <members>CSA_Inquiry_Element_Definition__c</members>
         <members>CSA_Answer_Definition__c</members>
+        <members>CSA_Inquiry__c</members>
         <name>CustomObject</name>
     </types>
    <types>

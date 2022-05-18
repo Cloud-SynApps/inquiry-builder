@@ -58,17 +58,6 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
-    <recordCreates>
-        <name>Save_Response</name>
-        <label>Save Response</label>
-        <locationX>527</locationX>
-        <locationY>381</locationY>
-        <connector>
-            <targetReference>Get_Next_Element_Definition</targetReference>
-        </connector>
-        <object>IB_Inquiry_Response__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
     <recordLookups>
         <name>Get_Next_Element_Definition</name>
         <label>Get Next Element Definition</label>
@@ -99,7 +88,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Save_Response</targetReference>
+            <targetReference>Get_Next_Element_Definition</targetReference>
         </connector>
         <fields>
             <name>Question</name>

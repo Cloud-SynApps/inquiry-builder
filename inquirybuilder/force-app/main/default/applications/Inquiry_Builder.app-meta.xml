@@ -13,6 +13,7 @@
     <navType>Console</navType>
     <tabs>CSA_Inquiry_Question__c</tabs>
     <tabs>CSA_Inquiry_Template__c</tabs>
+    <tabs>CSA_Inquiry__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Inquiry_Builder_UtilityBar</utilityBar>
     <workspaceConfig>
@@ -21,6 +22,9 @@
         </mappings>
         <mappings>
             <tab>CSA_Inquiry_Template__c</tab>
+        </mappings>
+        <mappings>
+            <tab>CSA_Inquiry__c</tab>
         </mappings>
     </workspaceConfig>
 </CustomApplication>
