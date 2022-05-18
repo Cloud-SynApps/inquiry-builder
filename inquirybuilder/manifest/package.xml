@@ -16,6 +16,15 @@
         <members>InquiryMainController</members>
         <name>Flow</name>
     </types>
+    <types>
+        <members>Inquiry Layout</members>
+        <members>Inquiry Template Layout</members>
+        <members>Inquiry Element Layout</members>
+        <members>Question Definition Layout</members>
+        <members>Answer Definition Layout</members>
+        <name>Layout</name>
+    </types>
+
     
     <version>54.0</version>
 </Package>
