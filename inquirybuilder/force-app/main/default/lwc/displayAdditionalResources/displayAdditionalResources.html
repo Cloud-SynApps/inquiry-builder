@@ -1,0 +1,11 @@
+<template>
+    <lightning-card>
+    <template for:each={resources} for:item="resource">
+    <div key={resource.id}>
+        <p>hi</p>
+    <lightning-formatted-url value={resource.Web_Resource__r.Resource_Url__c} tooltip="Use https://domain-name" label={resource.Web_Resource__r.Resource_Name__c} target="_blank" ></lightning-formatted-url>
+    </div>    
+    </template>    
+    </lightning-card>
+
+</template>
