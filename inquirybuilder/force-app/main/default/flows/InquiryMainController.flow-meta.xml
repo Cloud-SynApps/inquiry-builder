@@ -4,8 +4,8 @@
     <assignments>
         <name>Set_First_Element</name>
         <label>Set First Element</label>
-        <locationX>230</locationX>
-        <locationY>158</locationY>
+        <locationX>231</locationX>
+        <locationY>235</locationY>
         <assignmentItems>
             <assignToReference>NextElement</assignToReference>
             <operator>Assign</operator>
@@ -58,11 +58,60 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Inquiry_Record</name>
+        <label>Create Inquiry Record</label>
+        <locationX>125</locationX>
+        <locationY>177</locationY>
+        <connector>
+            <targetReference>Set_First_Element</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Inquiry_Template__c</field>
+            <value>
+                <stringValue>a3q6g00000189jLAAQ</stringValue>
+            </value>
+        </inputAssignments>
+        <object>CSA_Inquiry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Inquiry_Response</name>
+        <label>Create Inquiry Response</label>
+        <locationX>613</locationX>
+        <locationY>247</locationY>
+        <connector>
+            <targetReference>Get_Next_Element_Definition</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>ErrorHandling</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Inquiry_Element__c</field>
+            <value>
+                <elementReference>Get_Next_Element_Definition.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Inquiry__c</field>
+            <value>
+                <elementReference>Create_Inquiry_Record</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Response__c</field>
+            <value>
+                <elementReference>Answers</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CSA_Inquiry_Response__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>Get_Next_Element_Definition</name>
         <label>Get Next Element Definition</label>
-        <locationX>399</locationX>
-        <locationY>209</locationY>
+        <locationX>370</locationX>
+        <locationY>236</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>QuestionContainer</targetReference>
@@ -80,40 +129,137 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <screens>
-        <name>QuestionContainer</name>
-        <label>Question</label>
-        <locationX>656</locationX>
-        <locationY>209</locationY>
+        <name>Display4</name>
+        <label>Display4</label>
+        <locationX>627</locationX>
+        <locationY>130</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Get_Next_Element_Definition</targetReference>
+            <targetReference>Create_Inquiry_Response</targetReference>
         </connector>
         <fields>
-            <name>Question</name>
-            <fieldText>&lt;p&gt;{!Get_Next_Element_Definition.Question_Definition__r.Question__c}&lt;/p&gt;</fieldText>
+            <name>Display1</name>
+            <fieldText>&lt;p&gt;{!Create_Inquiry_Record}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>Answers</name>
-            <choiceReferences>AnswerChoice</choiceReferences>
-            <dataType>String</dataType>
-            <fieldType>RadioButtons</fieldType>
+            <name>display2</name>
+            <fieldText>&lt;p&gt;{!Answers}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Display3</name>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>ErrorHandling</name>
+        <label>ErrorHandling</label>
+        <locationX>752</locationX>
+        <locationY>264</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Error_Handling</name>
+            <fieldText>&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>QuestionContainer</name>
+        <label>Question</label>
+        <locationX>487</locationX>
+        <locationY>105</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Display4</targetReference>
+        </connector>
+        <fields>
+            <name>QuestionContainer_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>QuestionContainer_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>InquiryTemplate</name>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;CSA Exploration Tool&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Construction and Renovations&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>QuestionContainer_Section2</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>QuestionContainer_Section2_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Access_Code</name>
+                    <fieldText>&lt;p&gt;Access Code: {!Create_Inquiry_Record}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>QuestionContainer_Section2_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Question</name>
+                    <fieldText>&lt;p&gt;{!Get_Next_Element_Definition.Question_Definition__r.Question__c}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <fields>
+                    <name>Answers</name>
+                    <choiceReferences>AnswerChoice</choiceReferences>
+                    <dataType>String</dataType>
+                    <fieldType>RadioButtons</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>9</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
             <isRequired>false</isRequired>
         </fields>
         <pauseButtonLabel>Save for Later</pauseButtonLabel>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <start>
         <locationX>271</locationX>
         <locationY>31</locationY>
         <connector>
-            <targetReference>Set_First_Element</targetReference>
+            <targetReference>Create_Inquiry_Record</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>CurrentQuestion</name>
         <dataType>String</dataType>
