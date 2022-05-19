@@ -26,6 +26,10 @@
         <members>CSA_Inquiry_Response__c-Inquiry Response Layout</members>
         <name>Layout</name>
     </types>
+    <types>
+        <members>interviewsByRecord</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
 
     
     <version>54.0</version>
