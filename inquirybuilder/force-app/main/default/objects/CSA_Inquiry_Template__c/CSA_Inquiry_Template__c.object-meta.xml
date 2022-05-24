@@ -155,7 +155,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Inquiry Template</label>
     <nameField>
-        <label>Inquiry Template</label>
+        <label>Inquiry Template Name</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>

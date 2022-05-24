@@ -11,13 +11,63 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Inquiry Builder</label>
     <navType>Console</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inquiry_Element_Question_Record_Page1</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>CSA_Inquiry_Element_Definition__c</pageOrSobjectType>
+        <recordType>CSA_Inquiry_Element_Definition__c.Question</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inquiry_Element_Question_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>CSA_Inquiry_Element_Definition__c</pageOrSobjectType>
+        <recordType>CSA_Inquiry_Element_Definition__c.Question</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inquiry_Element_Web_Content_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>CSA_Inquiry_Element_Definition__c</pageOrSobjectType>
+        <recordType>CSA_Inquiry_Element_Definition__c.Resource</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Inquiry_Element_Web_Content_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>CSA_Inquiry_Element_Definition__c</pageOrSobjectType>
+        <recordType>CSA_Inquiry_Element_Definition__c.Resource</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
     <tabs>CSA_Inquiry_Question__c</tabs>
     <tabs>CSA_Inquiry_Template__c</tabs>
     <tabs>CSA_Inquiry__c</tabs>
     <tabs>CSA_Inquiry_Response__c</tabs>
+    <tabs>CSA_Web_Resources__c</tabs>
+    <tabs>CSA_Element_Web_Resource__c</tabs>
+    <tabs>CSA_Inquiry_Element_Definition__c</tabs>
+    <tabs>CSA_Web_Content__c</tabs>
+    <tabs>CSA_Inquiry_Category__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Inquiry_Builder_UtilityBar</utilityBar>
     <workspaceConfig>
+        <mappings>
+            <tab>CSA_Element_Web_Resource__c</tab>
+        </mappings>
+        <mappings>
+            <tab>CSA_Inquiry_Category__c</tab>
+        </mappings>
+        <mappings>
+            <tab>CSA_Inquiry_Element_Definition__c</tab>
+        </mappings>
         <mappings>
             <tab>CSA_Inquiry_Question__c</tab>
         </mappings>
@@ -29,6 +79,12 @@
         </mappings>
         <mappings>
             <tab>CSA_Inquiry__c</tab>
+        </mappings>
+        <mappings>
+            <tab>CSA_Web_Content__c</tab>
+        </mappings>
+        <mappings>
+            <tab>CSA_Web_Resources__c</tab>
         </mappings>
     </workspaceConfig>
 </CustomApplication>

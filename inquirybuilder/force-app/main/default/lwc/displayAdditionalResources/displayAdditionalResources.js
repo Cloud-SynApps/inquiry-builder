@@ -1,27 +1,40 @@
 import { LightningElement,api } from 'lwc';
-import getResources from '@salesforce/apex/DisplayAdditionalResources.displayResources';
+import getWebResource from '@salesforce/apex/DisplayAdditionalResources.displayResources';
 
 export default class DisplayAdditionalResources extends LightningElement {
 
     resources;
     resourcesUrl;
     resourceName;
-    @api elementId;
+    _elementId;
     connectedCallback()
     {
-        getResources()
+       
+    }
+    
+    
+   @api get elementId()
+   {
+       console.log('-get-',this._elementId);
+        return this._elementId;
+   }
+
+   set elementId(value)
+   {
+    this._elementId = value;
+    console.log('set-->',value);
+    getWebResource({ elementId: this._elementId })
         .then((result) => {
+            console.log('-set - promise-',result);
             this.resources = result;
-            console.log('resources', this.resources);
-            console.log('resources', JSON.stringify(this.resources));
-            console.log('element Id',this.elementId);
-            
-            
+            this.error = undefined;
         })
         .catch((error) => {
             this.error = error;
-           
-        });   
-    }
-
+            this.resources = undefined;
+        });
+    
+       
+       
+   }
 }

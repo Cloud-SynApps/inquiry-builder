@@ -1,0 +1,21 @@
+<template>
+    
+    <lightning-card>
+        
+        <h1><b>Civil Disputes</b></h1>
+        <hr>
+       
+        <lightning-layout>
+            <lightning-layout-item>
+                <p>Ready to start? Click or tap the button that best describes your issue.</p>
+            <template if:true={categories} for:each={categories} for:item="categoryItem">
+            <div class="slds-p-around_medium lgc-bg"  key={categoryItem.Id}>
+            <lightning-tile label={categoryItem.Category_Name__c} href={categoryItem.url}>
+            <p class="slds-truncate" title={categoryItem.Category_Name__c}>{categoryItem.Help_Text__c} {categoryItem.url}</p>
+            </lightning-tile>
+            </div>
+            </template>
+        </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

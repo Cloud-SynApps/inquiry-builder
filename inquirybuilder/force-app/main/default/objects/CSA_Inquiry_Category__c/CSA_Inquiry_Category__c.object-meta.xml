@@ -153,13 +153,12 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Inquiry</label>
+    <label>Inquiry Category</label>
     <nameField>
-        <displayFormat>CSA-INQ-{0000}</displayFormat>
-        <label>Inquiry Number</label>
-        <type>AutoNumber</type>
+        <label>Inquiry Category Name</label>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Inquiry</pluralLabel>
+    <pluralLabel>Inquiry Categories</pluralLabel>
     <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

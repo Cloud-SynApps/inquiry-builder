@@ -26,6 +26,10 @@
                 <behavior>Edit</behavior>
                 <field>Next_Element__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Content__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

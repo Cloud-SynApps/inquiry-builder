@@ -7,6 +7,10 @@
         <members>CSA_Answer_Definition__c</members>
         <members>CSA_Inquiry__c</members>
         <members>CSA_Inquiry_Response__c</members>
+        <members>CSA_Element_Web_Resource__c</members>
+        <members>CSA_Web_Content__c</members>
+        <members>CSA_Web_Resources__c</members>
+        <members>CSA_Inquiry_Category__c</members>
         <name>CustomObject</name>
     </types>
    <types>

@@ -153,13 +153,13 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Inquiry</label>
+    <label>Element Web Resource</label>
     <nameField>
-        <displayFormat>CSA-INQ-{0000}</displayFormat>
-        <label>Inquiry Number</label>
+        <displayFormat>EWR-{0000}</displayFormat>
+        <label>Element Web Resource Number</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Inquiry</pluralLabel>
+    <pluralLabel>Element Web Resources</pluralLabel>
     <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
