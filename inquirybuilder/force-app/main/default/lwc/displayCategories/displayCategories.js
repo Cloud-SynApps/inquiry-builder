@@ -1,5 +1,5 @@
 import { LightningElement,api } from 'lwc';
-import getCategory from '@salesforce/apex/InquiryBuilderGetRecords.getCategory';
+import getCategory from '@salesforce/apex/InquiryBuilderController.getCategory';
 
 export default class DisplayCategories extends LightningElement {
 
@@ -12,10 +12,10 @@ connectedCallback()
         .then((result) => {
             console.log('Categories',result);
 
-            result.forEach(element => {
-                element['url'] = '/s/inquirybuilder?recordId='+element.Id;
-            });
-            console.log('Categories',result);
+            //result.forEach(element => {
+            //    element['url'] = '/s/inquirybuilder?recordId='+element.Id;
+           // });
+            
             this.categories= result;           
         })
         .catch((error) => {

@@ -6,12 +6,12 @@
         <hr>
        
         <lightning-layout>
-            <lightning-layout-item>
-                <p>Ready to start? Click or tap the button that best describes your issue.</p>
+            <lightning-layout-item>  
             <template if:true={categories} for:each={categories} for:item="categoryItem">
             <div class="slds-p-around_medium lgc-bg"  key={categoryItem.Id}>
-            <lightning-tile label={categoryItem.Category_Name__c} href={categoryItem.url}>
-            <p class="slds-truncate" title={categoryItem.Category_Name__c}>{categoryItem.Help_Text__c} {categoryItem.url}</p>
+            <lightning-tile label={categoryItem.Name} href="/InquiryBuilder/s/category-detail" onclick={handleclick} value={categoryItem.Name}>
+            <!--lightning-tile label={categoryItem.Name} href={categoryItem.url}-->
+           <!-- <p class="slds-truncate" title={categoryItem.Category_Name__c}>{categoryItem.Help_Text__c} {categoryItem.url}</p> -->
             </lightning-tile>
             </div>
             </template>

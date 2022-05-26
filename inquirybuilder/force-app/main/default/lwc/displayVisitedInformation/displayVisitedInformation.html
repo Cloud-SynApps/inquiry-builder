@@ -1,0 +1,24 @@
+<template>
+    <lightning-card> 
+        <lightning-accordion allow-multiple-sections-open
+        onsectiontoggle={handleSectionToggle}
+        active-section-name={activeSections}>
+        <lightning-accordion-section name="A" label="Information You Provided">
+        <template if:true={information} for:each={information} for:item="informationItem">
+            <ol key={informationItem.Id}>
+                <li>{informationItem.Response_Information__c}</li>
+            </ol>
+        </template>
+        </lightning-accordion-section>
+        </lightning-accordion>   
+        <!--lightning-vertical-navigation>
+            <lightning-vertical-navigation-section label="Information You Provided">
+            <template if:true={information} for:each={information} for:item="informationItem">
+            <lightning-vertical-navigation-item key={informationItem.Id} label={informationItem.Response_Information__c} name={informationItem.Response_Information__c} ></lightning-vertical-navigation-item>
+      
+        </template>    
+        </lightning-vertical-navigation-section>
+        </lightning-vertical-navigation-->
+        </lightning-card> 
+
+</template>
