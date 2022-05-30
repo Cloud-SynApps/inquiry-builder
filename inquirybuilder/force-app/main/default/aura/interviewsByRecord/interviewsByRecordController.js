@@ -18,5 +18,15 @@
 		if(event.getParam("status").includes("FINISHED")) {
 		   component.get("v.overlay").close();
 		}
+	 },
+
+
+	 handleClick: function(component,event){
+
+		var accessCode = component.get("v.accessCode");
+		var access = 'test';
+		console.log('Access code' +accessCode);
+		console.log('Access code' +access);
+
 	 }
 })

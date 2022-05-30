@@ -2,6 +2,7 @@
     <aura:attribute name="columns" type="List" default=""/>
     <aura:attribute name="Interviews" type="Object" />
     <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="accessCode" type="String" />
     <aura:attribute name="ContextRecord" type="Object" />
     <aura:attribute name="overlay" type="Aura.Component"/>
     <aura:handler name="init" value="{!this}" action="{!c.init}" />
@@ -85,6 +86,7 @@
         </aura:iteration>
      </tbody>
   </table>
+  
   </lightning:card>
 	
 </aura:component>

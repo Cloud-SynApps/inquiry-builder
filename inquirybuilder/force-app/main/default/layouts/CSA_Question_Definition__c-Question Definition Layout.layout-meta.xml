@@ -85,10 +85,6 @@
         <fields>NAME</fields>
         <relatedList>CSA_Inquiry_Element_Definition__c.Question_Definition__c</relatedList>
     </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>CSA_Inquiry_Element_Definition__c.Next_Question__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

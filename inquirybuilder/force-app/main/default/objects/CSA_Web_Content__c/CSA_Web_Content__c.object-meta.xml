@@ -155,8 +155,8 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Web Content</label>
     <nameField>
-        <displayFormat>KA-{0000}</displayFormat>
-        <label>Knowledge Article Number</label>
+        <displayFormat>Content-{0000}</displayFormat>
+        <label>Web Content Number</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Web Content</pluralLabel>

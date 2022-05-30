@@ -2,15 +2,31 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
     <assignments>
-        <name>Set_First_Element</name>
-        <label>Set First Element</label>
-        <locationX>340</locationX>
-        <locationY>236</locationY>
+        <name>NextElement1</name>
+        <label>NextElement</label>
+        <locationX>1222</locationX>
+        <locationY>113</locationY>
         <assignmentItems>
             <assignToReference>NextElement</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>a3t6g0000007taAAAQ</stringValue>
+                <elementReference>Get_Next_Element_Definition.Next_Inquiry_Element__r.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Inquiry_Response_0</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_First_Element</name>
+        <label>Set First Element</label>
+        <locationX>811</locationX>
+        <locationY>302</locationY>
+        <assignmentItems>
+            <assignToReference>NextElement</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Fiirst_Element.Id</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -27,8 +43,8 @@
     <decisions>
         <name>Check_Element_Type</name>
         <label>Check Element Type</label>
-        <locationX>666</locationX>
-        <locationY>114</locationY>
+        <locationX>829</locationX>
+        <locationY>50</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>isQuestion</name>
@@ -60,6 +76,21 @@
             </connector>
             <label>isContent</label>
         </rules>
+        <rules>
+            <name>isOutcome</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Next_Element_Definition.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Outcome</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Outcome</targetReference>
+            </connector>
+            <label>isOutcome</label>
+        </rules>
     </decisions>
     <dynamicChoiceSets>
         <name>AnswerChoice</name>
@@ -75,6 +106,10 @@
         </filters>
         <limit>200</limit>
         <object>CSA_Answer_Definition__c</object>
+        <outputAssignments>
+            <assignToReference>InformationYouProvided</assignToReference>
+            <field>Information__c</field>
+        </outputAssignments>
         <outputAssignments>
             <assignToReference>NextElement</assignToReference>
             <field>Next_Element__c</field>
@@ -105,8 +140,8 @@
     <recordCreates>
         <name>Create_Inquiry_Record</name>
         <label>Create Inquiry Record</label>
-        <locationX>68</locationX>
-        <locationY>239</locationY>
+        <locationX>50</locationX>
+        <locationY>104</locationY>
         <connector>
             <targetReference>Get_Access_Code</targetReference>
         </connector>
@@ -122,8 +157,8 @@
     <recordCreates>
         <name>Create_Inquiry_Response</name>
         <label>Create Inquiry Response</label>
-        <locationX>1068</locationX>
-        <locationY>402</locationY>
+        <locationX>1374</locationX>
+        <locationY>460</locationY>
         <connector>
             <targetReference>Get_Next_Element_Definition</targetReference>
         </connector>
@@ -143,6 +178,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Response_Information__c</field>
+            <value>
+                <elementReference>InformationYouProvided</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Response__c</field>
             <value>
                 <elementReference>Answers</elementReference>
@@ -151,14 +192,43 @@
         <object>CSA_Inquiry_Response__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
+    <recordCreates>
+        <name>Create_Inquiry_Response_0</name>
+        <label>Create Inquiry Response</label>
+        <locationX>1222</locationX>
+        <locationY>262</locationY>
+        <connector>
+            <targetReference>Get_Next_Element_Definition</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Inquiry_Element__c</field>
+            <value>
+                <elementReference>Get_Next_Element_Definition.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Inquiry__c</field>
+            <value>
+                <elementReference>Create_Inquiry_Record</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Resources__c</field>
+            <value>
+                <elementReference>Get_Next_Element_Definition.Web_Content__r.Title__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>CSA_Inquiry_Response__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <recordLookups>
         <name>Get_Access_Code</name>
         <label>Get Access Code</label>
-        <locationX>209</locationX>
-        <locationY>240</locationY>
+        <locationX>103</locationX>
+        <locationY>291</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Set_First_Element</targetReference>
+            <targetReference>Get_Fiirst_Element</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -173,10 +243,38 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>Get_Fiirst_Element</name>
+        <label>Get Fiirst Element</label>
+        <locationX>321</locationX>
+        <locationY>299</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>TermsOfUse</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Is_First_Question__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Inquiry_Template__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>templateId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>CSA_Inquiry_Element_Definition__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Next_Element_Definition</name>
         <label>Get Next Element Definition</label>
-        <locationX>489</locationX>
-        <locationY>236</locationY>
+        <locationX>935</locationX>
+        <locationY>293</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Element_Type</targetReference>
@@ -197,13 +295,13 @@
     <screens>
         <name>Content</name>
         <label>Content</label>
-        <locationX>835</locationX>
-        <locationY>217</locationY>
+        <locationX>1042</locationX>
+        <locationY>81</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Create_Inquiry_Response</targetReference>
+            <targetReference>NextElement1</targetReference>
         </connector>
         <fields>
             <name>Content_Section1</name>
@@ -213,7 +311,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>InquiryTemplate_0</name>
-                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;CSA Solution Explorer Tool&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Construction and Renovations&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;CSA Solution Explorer Tool&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Next_Element_Definition.Inquiry_Template__r.Name}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <inputParameters>
@@ -234,13 +332,42 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Access_Code_0</name>
-                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Access Code:&lt;/span&gt;&lt;i style=&quot;font-size: 16px;&quot;&gt; &lt;/i&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Access_Code.Name}&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;&lt;i&gt;Access Code: &lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Access_Code.Name}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
-                    <name>Responses_0</name>
-                    <fieldText>&lt;p&gt;&lt;i style=&quot;font-size: 16px;&quot;&gt;Information You Provided:&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i style=&quot;font-size: 16px;&quot;&gt;{!InformationYouProvided}&lt;/i&gt;&lt;/p&gt;</fieldText>
-                    <fieldType>DisplayText</fieldType>
+                    <name>visitedInformation1</name>
+                    <extensionName>c:displayVisitedInformation</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>inquiryId</name>
+                        <value>
+                            <elementReference>Create_Inquiry_Record</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>Create_Inquiry_Record</assignToReference>
+                        <name>inquiryId</name>
+                    </outputParameters>
+                </fields>
+                <fields>
+                    <name>VisitedResources1</name>
+                    <extensionName>c:displayVisitedResources</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>inquiryId</name>
+                        <value>
+                            <elementReference>Create_Inquiry_Record</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>Create_Inquiry_Record</assignToReference>
+                        <name>inquiryId</name>
+                    </outputParameters>
                 </fields>
                 <fields>
                     <name>AdditionalResources_0</name>
@@ -271,11 +398,6 @@
                 <name>Content_Section2_Column2</name>
                 <fieldType>Region</fieldType>
                 <fields>
-                    <name>Question_0</name>
-                    <fieldText>&lt;p&gt;{!Get_Next_Element_Definition.Web_Content__r.Title__c}&lt;/p&gt;</fieldText>
-                    <fieldType>DisplayText</fieldType>
-                </fields>
-                <fields>
                     <name>Question_HelpText_0</name>
                     <fieldText>&lt;p&gt;{!Get_Next_Element_Definition.Web_Content__r.Content__c}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
@@ -291,14 +413,15 @@
             <isRequired>false</isRequired>
         </fields>
         <pauseButtonLabel>Save for Later</pauseButtonLabel>
+        <pausedText>&lt;h1&gt;&lt;b style=&quot;color: rgb(250, 99, 4);&quot;&gt;Exploration saved&lt;/b&gt;&lt;/h1&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Your access code is important, so please keep it. It lets you return to this exploration and continue where you left off.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Your access code is:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(68, 68, 68); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Access_Code.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</pausedText>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>ErrorHandling</name>
         <label>ErrorHandling</label>
-        <locationX>1176</locationX>
-        <locationY>317</locationY>
+        <locationX>1465</locationX>
+        <locationY>552</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -311,10 +434,132 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>Outcome</name>
+        <label>Outcome</label>
+        <locationX>873</locationX>
+        <locationY>178</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Outcome_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Outcome_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>InquiryTemplate_0_0</name>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;CSA Solution Explorer Tool&lt;/span&gt;&lt;/p&gt;&lt;p&gt;{!Get_Next_Element_Definition.Inquiry_Template__r.Name}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Outcome_Section2</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Outcome_Section2_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Access_Code_0_0</name>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Access Code:&lt;/span&gt;&lt;i style=&quot;font-size: 16px;&quot;&gt; &lt;/i&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Access_Code.Name}&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <fields>
+                    <name>visitedInformation2</name>
+                    <extensionName>c:displayVisitedInformation</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>inquiryId</name>
+                        <value>
+                            <elementReference>Create_Inquiry_Record</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>Create_Inquiry_Record</assignToReference>
+                        <name>inquiryId</name>
+                    </outputParameters>
+                </fields>
+                <fields>
+                    <name>VisitedResources2</name>
+                    <extensionName>c:displayVisitedResources</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>inquiryId</name>
+                        <value>
+                            <elementReference>Create_Inquiry_Record</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>Create_Inquiry_Record</assignToReference>
+                        <name>inquiryId</name>
+                    </outputParameters>
+                </fields>
+                <fields>
+                    <name>AdditionalResources_0_0</name>
+                    <extensionName>c:displayAdditionalResources</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>elementId</name>
+                        <value>
+                            <elementReference>Get_Next_Element_Definition.Id</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>Get_Next_Element_Definition.Id</assignToReference>
+                        <name>elementId</name>
+                    </outputParameters>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>3</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Outcome_Section2_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Outcome_Content</name>
+                    <fieldText>&lt;p&gt;{!Get_Next_Element_Definition.Inquiry_Outcome__r.Content__c}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>9</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+        </fields>
+        <pauseButtonLabel>Save and Exit</pauseButtonLabel>
+        <pausedText>&lt;h1&gt;&lt;b style=&quot;color: rgb(250, 99, 4);&quot;&gt;Exploration saved&lt;/b&gt;&lt;/h1&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Your access code is important, so please keep it. It lets you return to this exploration and continue where you left off.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;Your access code is:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color: rgb(68, 68, 68); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;{!Get_Access_Code.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</pausedText>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
         <name>QuestionContainer</name>
         <label>Question</label>
-        <locationX>948</locationX>
-        <locationY>106</locationY>
+        <locationX>1395</locationX>
+        <locationY>45</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -329,7 +574,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>InquiryTemplate</name>
-                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;CSA Solution Explorer Tool&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Construction and Renovations&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;CSA Solution Explorer Tool&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!Get_Next_Element_Definition.Inquiry_Template__r.Name}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <inputParameters>
@@ -350,13 +595,42 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Access_Code</name>
-                    <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Access Code:&lt;/span&gt;&lt;i style=&quot;font-size: 16px;&quot;&gt; &lt;/i&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Access_Code.Name}&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 16px;&quot;&gt;&lt;i&gt;﻿Access Code: &lt;/i&gt;&lt;/b&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;{!Get_Access_Code.Name}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
-                    <name>Responses</name>
-                    <fieldText>&lt;p&gt;&lt;i style=&quot;font-size: 16px;&quot;&gt;Information You Provided:&lt;/i&gt;&lt;/p&gt;&lt;p&gt;&lt;i style=&quot;font-size: 16px;&quot;&gt;{!InformationYouProvided}&lt;/i&gt;&lt;/p&gt;</fieldText>
-                    <fieldType>DisplayText</fieldType>
+                    <name>visitedInformation</name>
+                    <extensionName>c:displayVisitedInformation</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>inquiryId</name>
+                        <value>
+                            <elementReference>Create_Inquiry_Record</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>Create_Inquiry_Record</assignToReference>
+                        <name>inquiryId</name>
+                    </outputParameters>
+                </fields>
+                <fields>
+                    <name>VisitedResources</name>
+                    <extensionName>c:displayVisitedResources</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>inquiryId</name>
+                        <value>
+                            <elementReference>Create_Inquiry_Record</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <outputParameters>
+                        <assignToReference>Create_Inquiry_Record</assignToReference>
+                        <name>inquiryId</name>
+                    </outputParameters>
                 </fields>
                 <fields>
                     <name>AdditionalResources</name>
@@ -414,17 +688,67 @@
             <isRequired>false</isRequired>
         </fields>
         <pauseButtonLabel>Save for Later</pauseButtonLabel>
+        <pausedText>&lt;h1&gt;&lt;b style=&quot;color: rgb(250, 99, 4);&quot;&gt;Exploration saved&lt;/b&gt;&lt;/h1&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: Arial, sans-serif; color: rgb(51, 51, 51);&quot;&gt;Your access code is important, so please keep it. It lets you return to this exploration and continue where you left off.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: Arial, sans-serif; color: rgb(51, 51, 51);&quot;&gt;Your access code is:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; color: rgb(68, 68, 68);&quot;&gt;{!Get_Access_Code.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</pausedText>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Terms</name>
+        <label>Terms</label>
+        <locationX>706</locationX>
+        <locationY>311</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Set_First_Element</targetReference>
+        </connector>
+        <fields>
+            <name>TermsofUse4</name>
+            <extensionName>c:termsofuse</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>TermsOfUse</name>
+        <label>TermsOfUse</label>
+        <locationX>550</locationX>
+        <locationY>305</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Terms</targetReference>
+        </connector>
+        <fields>
+            <name>Termsofuse1</name>
+            <fieldText>&lt;h1&gt;&lt;b style=&quot;color: rgb(247, 105, 3);&quot;&gt;Please read and agree to the terms to proceed&lt;/b&gt;&lt;/h1&gt;&lt;p&gt;&lt;b&gt;Let&apos;s get started!&lt;/b&gt;&lt;/p&gt;&lt;p&gt;The Solution Explorer asks simple questions about your dispute. It’s free, anonymous, and confidential.&lt;/p&gt;&lt;p&gt;The Solution Explorer doesn&apos;t provide legal advice. But it gives you legal information based on your answers. It even has template letters that you can send someone to try and resolve a dispute on your own.&lt;/p&gt;&lt;p&gt;It also classifies your dispute and gives you the right CRT online application form for your situation.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;How to make a CRT claim&lt;/b&gt;&lt;/p&gt;&lt;p&gt;To apply, choose “Make a claim with the CRT” when asked what you’d like to do about your issue, and follow the prompts. There&apos;s no obligation to make a CRT claim. You can use the Solution Explorer any time for free legal information and tools.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Disclaimers and terms of use&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;The content in this site is not legal advice.&lt;/b&gt;&amp;nbsp;The Civil Resolution Tribunal (CRT) can&apos;t provide legal advice. If you have questions about whether you should make a claim with the CRT, you may want to contact a lawyer or other legal services provider.&lt;/p&gt;&lt;p&gt;This Solution Explorer content is subject to change and is updated regularly.&lt;/p&gt;&lt;p&gt;The Solution Explorer application is provided as a public service by the Government of British Columbia, Box 9411, Victoria, British Columbia, Canada V8W 9V1.&amp;nbsp;&lt;a href=&quot;https://civilresolutionbc.ca/wp-content/uploads/CRT-Solution-Explorer-Terms-of-Use.pdf&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Read our full Terms of Use&lt;/a&gt;.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>TermsofUse2</name>
+            <dataType>Boolean</dataType>
+            <fieldText>I agree to the Solution Explorer Terms of Use</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <nextOrFinishButtonLabel>Accept and Continue</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>271</locationX>
-        <locationY>31</locationY>
+        <locationX>441</locationX>
+        <locationY>84</locationY>
         <connector>
             <targetReference>Create_Inquiry_Record</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>CurrentQuestion</name>
         <dataType>String</dataType>

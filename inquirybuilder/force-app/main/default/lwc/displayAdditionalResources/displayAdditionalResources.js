@@ -7,10 +7,7 @@ export default class DisplayAdditionalResources extends LightningElement {
     resourcesUrl;
     resourceName;
     _elementId;
-    connectedCallback()
-    {
-       
-    }
+    
     
     
    @api get elementId()

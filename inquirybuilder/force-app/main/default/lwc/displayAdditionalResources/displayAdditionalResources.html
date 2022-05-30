@@ -3,7 +3,7 @@
     <lightning-vertical-navigation>
         <lightning-vertical-navigation-section label="Additional Resources">
     <template if:true={resources} for:each={resources} for:item="resource">
-        <lightning-vertical-navigation-item key={resource.Id} label={resource.Web_Resource__r.Resource_Name__c} name={resource.Web_Resource__r.Resource_Name__c} href={resource.Web_Resource__r.Resource_Url__c}></lightning-vertical-navigation-item>
+        <lightning-vertical-navigation-item key={resource.Id} label={resource.Web_Resource__r.Resource_Name__c} name={resource.Web_Resource__r.Resource_Name__c} href={resource.Web_Resource__r.Resource_Url__c} target="_blank"></lightning-vertical-navigation-item>
     <!--div key={resource.Id}>
         <p>hi</p>{resource.Id}
     <lightning-formatted-url value={resource.Web_Resource__r.Resource_Url__c} tooltip="Use https://domain-name" label={resource.Web_Resource__r.Resource_Name__c} target="_blank" ></lightning-formatted-url>

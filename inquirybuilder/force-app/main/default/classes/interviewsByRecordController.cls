@@ -1,11 +1,22 @@
 public with sharing class interviewsByRecordController {
     @AuraEnabled
-    public static List<FlowRecordRelation> getInterviews(Id recordId) {
-        return [ SELECT 
+    public static List<FlowRecordRelation> getInterviews(String recordId) {
+        String inquiry = [SELECT Id
+                            FROM CSA_Inquiry__c
+                            WHERE Name =: recordId LIMIT 1]?.Id;
+        if(String.isNotBlank(inquiry))
+        {
+            return [ SELECT 
                     ParentId, Parent.InterviewLabel, Parent.PauseLabel, 
                     Parent.CurrentElement, Parent.CreatedDate, Parent.Owner.Name 
                 FROM FlowRecordRelation 
-                WHERE RelatedRecordId = :recordId ];
+                WHERE RelatedRecordId =:inquiry];
+        }
+        else {
+            return NULL;
+        }
+                                       
+        
     }
 
     @AuraEnabled

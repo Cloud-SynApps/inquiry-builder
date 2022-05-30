@@ -47,7 +47,6 @@
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
-    <tabs>CSA_Inquiry_Question__c</tabs>
     <tabs>CSA_Inquiry_Template__c</tabs>
     <tabs>CSA_Inquiry__c</tabs>
     <tabs>CSA_Inquiry_Response__c</tabs>
@@ -56,9 +55,15 @@
     <tabs>CSA_Inquiry_Element_Definition__c</tabs>
     <tabs>CSA_Web_Content__c</tabs>
     <tabs>CSA_Inquiry_Category__c</tabs>
+    <tabs>CSA_Question_Definition__c</tabs>
+    <tabs>CSA_Answer_Definition__c</tabs>
+    <tabs>CSA_Inquiry_Outcome__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Inquiry_Builder_UtilityBar</utilityBar>
     <workspaceConfig>
+        <mappings>
+            <tab>CSA_Answer_Definition__c</tab>
+        </mappings>
         <mappings>
             <tab>CSA_Element_Web_Resource__c</tab>
         </mappings>
@@ -69,7 +74,7 @@
             <tab>CSA_Inquiry_Element_Definition__c</tab>
         </mappings>
         <mappings>
-            <tab>CSA_Inquiry_Question__c</tab>
+            <tab>CSA_Inquiry_Outcome__c</tab>
         </mappings>
         <mappings>
             <tab>CSA_Inquiry_Response__c</tab>
@@ -79,6 +84,9 @@
         </mappings>
         <mappings>
             <tab>CSA_Inquiry__c</tab>
+        </mappings>
+        <mappings>
+            <tab>CSA_Question_Definition__c</tab>
         </mappings>
         <mappings>
             <tab>CSA_Web_Content__c</tab>

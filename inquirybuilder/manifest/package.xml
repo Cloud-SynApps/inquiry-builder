@@ -32,6 +32,7 @@
     </types>
     <types>
         <members>interviewsByRecord</members>
+        <members>resumeInquiry</members>
         <name>AuraDefinitionBundle</name>
     </types>
 
