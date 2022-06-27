@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+    <members>DisplayAdditionalResources</members>
+    <members>InquiryBuilderController</members>
+    <name>ApexClass</name>
+    </types>
+    <types>
+    <members>CSA_Inquiry__c.CSA_Inquiry</members>
+    <name>CompactLayout</name>
+    </types>
+    <types>
+    <members>CSA_Logo1</members>
+    <name>ContentAsset</name>
+    </types>
+    <types>
+        <members>CSA_Inquiry_Template__c</members>
+        <members>CSA_Question_Definition__c</members>
+        <members>CSA_Inquiry_Element_Definition__c</members>
+        <members>CSA_Answer_Definition__c</members>
+        <members>CSA_Inquiry__c</members>
+        <members>CSA_Inquiry_Response__c</members>
+        <members>CSA_Element_Web_Resource__c</members>
+        <members>CSA_Web_Content__c</members>
+        <members>CSA_Web_Resources__c</members>
+        <members>CSA_Inquiry_Category__c</members>
+        <members>CSA_Inquiry_Outcome__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Inquiry_Builder</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+    <members>InquiryBuilder</members>
+    <name>CustomSite</name>
+    </types>
+    <types>
+    <members>CSA_Answer_Definition__c</members>
+    <members>CSA_Element_Web_Resource__c</members>
+    <members>CSA_Inquiry_Category__c</members>
+    <members>CSA_Inquiry_Element_Definition__c</members>
+    <members>CSA_Inquiry_Outcome__c</members>
+    <members>CSA_Inquiry_Response__c</members>
+    <members>CSA_Inquiry_Template__c</members>
+    <members>CSA_Inquiry__c</members>
+    <members>CSA_Question_Definition__c</members>
+    <members>CSA_Web_Content__c</members>
+    <members>CSA_Web_Resources__c</members>
+    <name>CustomTab</name>
+    </types>
+    <types>
+    <members>Publicfolder</members>
+    <members>Publicfolder/MgXObkjpMyqNmmaBmKkjTFDdXTVmar</members>
+    <name>Dashboard</name>
+    </types>
+    <types>
+    <members>Inquiry_Builder</members>
+    <members>Inquiry_Builder/SendAccessCode</members>
+    <name>EmailTemplate</name>
+    </types>
+    <types>
+    <members>Inquiry_Builder_UtilityBar</members>
+    <members>Inquiry_Element_Question_Record_Page1</members>
+    <members>Inquiry_Element_Web_Content_Record_Page</members>
+    <members>Inquiry_Record_Page</members>
+    <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>InquiryMainController</members>
+        <name>Flow</name>  
+    </types>
+    <types>
+    <members>CSA_Answer_Definition__c-Answer Definition Layout</members>
+    <members>CSA_Element_Web_Resource__c-Element Web Resource Layout</members>
+    <members>CSA_Inquiry_Category__c-Inquiry Category Layout</members>
+    <members>CSA_Inquiry_Element_Definition__c-Inquiry Element Layout</members>
+    <members>CSA_Inquiry_Element_Definition__c-Outcome</members>
+    <members>CSA_Inquiry_Element_Definition__c-Question Inquiry Element Layout</members>
+    <members>CSA_Inquiry_Element_Definition__c-Web Content Inquiry Element Layout</members>
+    <members>CSA_Inquiry_Outcome__c-Inquiry Outcome Layout</members>
+    <members>CSA_Inquiry_Response__c-Inquiry Response Layout</members>
+    <members>CSA_Inquiry_Template__c-Inquiry Template Layout</members>
+    <members>CSA_Inquiry__c-Inquiry Layout</members>
+    <members>CSA_Question_Definition__c-Question Definition Layout</members>
+    <members>CSA_Web_Content__c-Knowledge Article Layout</members>
+    <members>CSA_Web_Resources__c-Web Resource Layout</members>
+    <name>Layout</name>
+    </types>
+    <types>
+    <members>displayAdditionalResources</members>
+    <members>displayCategories</members>
+    <members>displayTemplate</members>
+    <members>displayVisitedInformation</members>
+    <members>displayVisitedResources</members>
+    <members>horizontalBreak</members>
+    <members>navigateButton</members>
+    <members>navigatePrevious</members>
+    <members>verticalBreak</members>
+    <name>LightningComponentBundle</name>
+    </types>
+    <types>
+    <members>CSA_Answer_Definition__c.All</members>
+    <members>CSA_Element_Web_Resource__c.All</members>
+    <members>CSA_Inquiry_Category__c.All</members>
+    <members>CSA_Inquiry_Element_Definition__c.All</members>
+    <members>CSA_Inquiry_Outcome__c.All</members>
+    <members>CSA_Inquiry_Response__c.All</members>
+    <members> CSA_Inquiry_Template__c.All</members>
+    <members>CSA_Inquiry__c.All</members>
+    <members>CSA_Question_Definition__c.All</members>
+    <members>CSA_Web_Content__c.All</members>
+    <members>CSA_Web_Resources__c.All</members>
+    <name>ListView</name>
+    </types>
+    <types>
+    <members>InquiryBuilder</members>
+    <name>Network</name>
+    </types>
+    <types>
+    <members>CSA_Inquiry_Category__c.Category_Details</members>
+    <members>CSA_Question_Definition__c.Question_Detail</members>
+    <members>CSA_Web_Content__c.Web_Content_Detail</members>
+    <members>Create_Question</members>
+    <name>QuickAction</name>
+    </types>
+    <types>
+    <members>CSA_Inquiry_Element_Definition__c.Outcome</members>
+    <members>CSA_Inquiry_Element_Definition__c.Resource</members>
+    <members>CSA_Inquiry_Element_Definition__c.Question</members>
+    <name>RecordType</name>
+    </types>
+    <types>
+    <members>Admin</members>
+    <name>Profile</name>
+    </types>
+    <types>
+    <members>InquiryBuilderReports</members>
+    <members>InquiryBuilderReports/Inquiry_By_Category_and_Status_YTn</members>
+    <name>Report</name>
+    </types>
+     <types>
+    <members>CSA_Inquiry_Report_Type</members>
+    <name>ReportType</name>
+    </types>
+    <types>
+    <members>InquiryBuilder1</members>
+    <name>SiteDotCom</name>
+    </types>
+    <types>
+    <members>CSA_Inquiry__c</members>
+    <name>Workflow</name>
+    </types>
+    <types>
+    <members>CSA_Inquiry__c.Inquiry_Builder_Send_access_code</members>
+    <name>WorkflowAlert</name>
+    </types>
+    <version>54.0</version>
+</Package>
