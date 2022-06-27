@@ -5,7 +5,7 @@ public with sharing class InquiryBuilderController {
 
         try {
             
-        List<CSA_Inquiry_Category__c> category = [SELECT Id,Name
+        List<CSA_Inquiry_Category__c> category = [SELECT Id,Name,Help_Text__c
                                                    FROM CSA_Inquiry_Category__c];
 
         return category;
@@ -18,13 +18,14 @@ public with sharing class InquiryBuilderController {
     }
 
     @AuraEnabled
-    public static List<CSA_Inquiry_Template__c> getTemplate() {
+    public static List<CSA_Inquiry_Template__c> getTemplate(string CategoryId) {
 
         try {
             
         List<CSA_Inquiry_Template__c> template = [SELECT Id,Name,Default_Outcome__c,Help_Text__c,Inquiry_Category__c
-                                                   FROM CSA_Inquiry_Template__c];
-
+                                                   FROM CSA_Inquiry_Template__c
+                                                   WHERE Inquiry_Category__c=:CategoryId];
+        
         return template;
 
         } 
@@ -59,7 +60,7 @@ public with sharing class InquiryBuilderController {
         List<CSA_Inquiry_Response__c> visitedInformation = [SELECT Id,Response_Information__c
                                                    FROM CSA_Inquiry_Response__c
                                                    WHERE Inquiry__c= :InquiryId
-                                                   AND Response_Information__c!=NULL];
+                                                   AND (Response_Information__c!=NULL AND InActive__c = false)];
         System.debug('Visited Information'+visitedInformation);
 
         return visitedInformation;
@@ -79,7 +80,8 @@ public with sharing class InquiryBuilderController {
         List<CSA_Inquiry_Response__c> visitedInformation = [SELECT Id,Resources__c
                                                    FROM CSA_Inquiry_Response__c
                                                    WHERE Inquiry__c= :InquiryId
-                                                   AND Resources__c!=NULL];
+                                                   AND  (Resources__c!=NULL AND InActive__c = false)
+                                                   ];
         System.debug('Visited Information'+visitedInformation);
 
         return visitedInformation;

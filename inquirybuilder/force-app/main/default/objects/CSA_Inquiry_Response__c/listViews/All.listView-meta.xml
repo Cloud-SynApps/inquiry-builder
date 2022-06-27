@@ -6,6 +6,8 @@
     <columns>Inquiry_Element__c</columns>
     <columns>Response__c</columns>
     <columns>Response_Information__c</columns>
+    <columns>Resources__c</columns>
+    <columns>InActive__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

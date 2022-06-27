@@ -1,9 +1,0 @@
-<aura:component controller="interviewsByRecordController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
-<aura:attribute name="accessCode" type="String" />
-<lightning:overlayLibrary aura:id="overlayLib" />    
-<lightning:card>
-        
-        <lightning:input name="Enter Access Code" label="Enter Access Code:" value="{!v.accessCode}"/>
-        <lightning:button variant="brand" label="Continue" title="Brand action" onclick="{!c.handleClick}" />
-    </lightning:card>
-</aura:component>

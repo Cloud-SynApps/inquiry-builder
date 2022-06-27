@@ -1,21 +1,27 @@
 <template>
-    
-    <lightning-card>
         
-        <h1><b>Civil Disputes</b></h1>
-        <hr>
-       
-        <lightning-layout>
-            <lightning-layout-item>  
+        <lightning-layout class="forceTopicFeaturedTopics topicList" multiple-rows>
+            
             <template if:true={categories} for:each={categories} for:item="categoryItem">
-            <div class="slds-p-around_medium lgc-bg"  key={categoryItem.Id}>
-            <lightning-tile label={categoryItem.Name} href="/InquiryBuilder/s/category-detail" onclick={handleclick} value={categoryItem.Name}>
-            <!--lightning-tile label={categoryItem.Name} href={categoryItem.url}-->
-           <!-- <p class="slds-truncate" title={categoryItem.Category_Name__c}>{categoryItem.Help_Text__c} {categoryItem.url}</p> -->
-            </lightning-tile>
-            </div>
+                
+                    <lightning-layout-item class="tileClass" key={categoryItem.Id} size="2" medium-device-size="2" flexibility="auto" padding="horizontal-medium"> 
+                        <div class="topicLabel">
+                        <div style="padding:10%;color:white;font-size:22px;">
+                            <a href={categoryItem.url} onclick={handleclick} data-value={categoryItem.Id} style="color:white">
+                                {categoryItem.Name}
+                        
+                            </a>
+                           
+                            <div style="padding:5%;color:white;font-size:12px;">{categoryItem.Help_Text__c}</div>
+                        </div> 
+                    </div>
+                <!--lightning-tile label={categoryItem.Name} href={categoryItem.url}-->
+            <!-- <p class="slds-truncate" title={categoryItem.Category_Name__c}>{categoryItem.Help_Text__c} {categoryItem.url}</p> -->
+                
+            </lightning-layout-item>
+                
             </template>
-        </lightning-layout-item>
+        
         </lightning-layout>
-    </lightning-card>
+    
 </template>
