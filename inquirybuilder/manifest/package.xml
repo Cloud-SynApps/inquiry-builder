@@ -90,6 +90,7 @@
     <types>
     <members>displayAdditionalResources</members>
     <members>displayCategories</members>
+    <members>displayTemplate</members>
     <members>displayVisitedInformation</members>
     <members>displayVisitedResources</members>
     <members>horizontalBreak</members>
