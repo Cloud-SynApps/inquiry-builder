@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inquiry_Template__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Inquiry Template</label>
+    <referenceTo>CSA_Inquiry_Template__c</referenceTo>
+    <relationshipLabel>Inquiry Outcome</relationshipLabel>
+    <relationshipName>Inquiry_Outcome</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

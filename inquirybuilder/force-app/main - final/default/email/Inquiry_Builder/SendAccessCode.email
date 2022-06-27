@@ -1,0 +1,13 @@
+Hello,
+
+To return to this inquiry:
+
+  *   Go to https://csainquirybuilderdeveloperedition.na174.force.com/InquiryBuilder
+  *   Your access code is: {!CSA_Inquiry__c.Name}
+  *   Access expires in 32 days on July 24, 2022
+
+Use your access code to return to your inquiry. We've saved your place so you can continue where you left off. For your privacy, no personal information is saved in the CSA Inquiry Builder. Inquiry will expire - your expiration date is displayed by your access code.
+
+This is an automatically generated email - please do not reply to it.
+
+CSA Inquiry Builder - {!CSA_Inquiry__c.Inquiry_Template__c}

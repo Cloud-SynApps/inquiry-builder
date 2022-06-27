@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>CSA Inquiry Builder Navigation Button</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+
+    <targetConfigs>
+
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="label" type="String" label="Button Label" role="inputOnly"/>
+            <property name="buttonType" type="String" label="Button Type" role="inputOnly"/>
+            <property name="buttonvariant" type="String" label="Button Variant" role="inputOnly"/>
+            <property name="selectedButtonType" type="String" label="Selected Button Type" role="outputOnly"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
