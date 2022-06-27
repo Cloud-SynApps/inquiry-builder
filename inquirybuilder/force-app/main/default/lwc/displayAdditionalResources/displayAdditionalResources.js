@@ -1,4 +1,4 @@
-import { LightningElement,api } from 'lwc';
+import { LightningElement,api,track } from 'lwc';
 import getWebResource from '@salesforce/apex/DisplayAdditionalResources.displayResources';
 
 export default class DisplayAdditionalResources extends LightningElement {
@@ -7,6 +7,8 @@ export default class DisplayAdditionalResources extends LightningElement {
     resourcesUrl;
     resourceName;
     _elementId;
+    @track link;
+    @track link1;
     
     
     
@@ -29,9 +31,7 @@ export default class DisplayAdditionalResources extends LightningElement {
         .catch((error) => {
             this.error = error;
             this.resources = undefined;
-        });
-    
-       
-       
+        });     
    }
+   
 }

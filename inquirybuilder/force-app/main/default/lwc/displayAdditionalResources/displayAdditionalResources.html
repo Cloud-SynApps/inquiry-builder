@@ -1,16 +1,20 @@
 <template>
     <lightning-card>    
-    <lightning-vertical-navigation>
-        <lightning-vertical-navigation-section label="Additional Resources">
+    
+            <h2><b><u>Additional Resources</u></b></h2>
     <template if:true={resources} for:each={resources} for:item="resource">
-        <lightning-vertical-navigation-item key={resource.Id} label={resource.Web_Resource__r.Resource_Name__c} name={resource.Web_Resource__r.Resource_Name__c} href={resource.Web_Resource__r.Resource_Url__c} target="_blank"></lightning-vertical-navigation-item>
+        <!--lightning-vertical-navigation-item key={resource.Id} label={resource.Web_Resource__r.Resource_Name__c} name={resource.Web_Resource__r.Resource_Name__c} href={resource.Web_Resource__r.Resource_Url__c} target="_blank"></lightning-vertical-navigation-item-->
+        <!--lightning-vertical-navigation-item key={resource.Id} label={resource.Web_Resource__r.Resource_Name__c} name={resource.Web_Resource__r.Resource_Name__c} value= {resource.Web_Resource__r.Resource_Url__c} onclick={handleClick}></lightning-vertical-navigation-item-->
+        <ol key={resource.Id}>
+            <li><lightning-formatted-url  value={resource.Web_Resource__r.Resource_Url__c} label={resource.Web_Resource__r.Resource_Name__c} ></lightning-formatted-url></li>
+        </ol>
+       
     <!--div key={resource.Id}>
         <p>hi</p>{resource.Id}
     <lightning-formatted-url value={resource.Web_Resource__r.Resource_Url__c} tooltip="Use https://domain-name" label={resource.Web_Resource__r.Resource_Name__c} target="_blank" ></lightning-formatted-url>
     </div-->    
     </template>    
-</lightning-vertical-navigation-section>
-</lightning-vertical-navigation>
+
     </lightning-card>
 
 </template>
